@@ -1,0 +1,18 @@
+{
+    "version": 3,
+    "mappings": "AGAA,AAAA,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,EAAE;AACF,CAAC,CAAC;EACE,MAAM,EAAE,CAAC;CACZ;;AAED,AAAA,EAAE;AACF,EAAE,CAAC;EACC,UAAU,EAAE,IAAI;EAChB,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;CACb;;AAED,AAAA,GAAG,CAAC;EACA,OAAO,EAAE,KAAK;EACd,SAAS,EAAE,IAAI;EACf,MAAM,EAAE,IAAI;CACf;;AAED,AAAA,MAAM,CAAC;EACH,MAAM,EAAE,OAAO;EACf,WAAW,EAAE,OAAO;CACvB;;AM1BD,AAAA,aAAa,CAAC;EACV,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,YAAY,EAAE,IAAI;EAClB,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,qBAAqB,CAAC;EAClB,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,IAAI;CACpB;;AAED,AAAA,aAAa,CAAC;EACV,UAAU,EAAE,MAAM;EAClB,gBAAgB,EAAE,OAAO;CAC5B;;AAED,AAAA,UAAU,CAAC;EACP,aAAa,EAAE,IAAI;CACtB;;AAED,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EAC/B,KAAK,EAAE,KAAK",
+    "sources": [
+        "main.scss",
+        "utils/_variables.scss",
+        "base/_container.scss",
+        "base/_common.scss",
+        "components/_buttons.scss",
+        "components/_modal-film.scss",
+        "components/_modal-team.scss",
+        "layout/_header.scss",
+        "layout/_main.scss",
+        "layout/_footer.scss"
+    ],
+    "names": [],
+    "file": "main.css"
+}

@@ -1,3 +1,48 @@
-h1 {
-    color: red;
+.footer {
+    background-color: #F7F7F7;
 }
+
+.page__footer {
+    text-align: center;
+}
+
+.footer__icon-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.footer__icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.dev__link {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@media screen and(min-width: 320px) {
+    .footer {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .copyright {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and(min-width: 768px) {
+    .page__footer {
+        display: flex;
+        justify-content: center;
+        
+    }
+
+    .copyright {
+        margin-bottom: 0;
+    }
+}
+

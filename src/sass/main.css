@@ -1,0 +1,55 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.footer__icon {
+  width: 14px;
+  height: 13px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.footer__icon-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 48px;
+}
+
+.page__footer {
+  text-align: center;
+  background-color: #F7F7F7;
+}
+
+.copyright {
+  margin-bottom: 10px;
+}
+
+@media screen and (min-width: 320px) {
+  width: 320px;
+}
+/*# sourceMappingURL=main.css.map */
