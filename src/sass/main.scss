@@ -1,7 +1,9 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
-
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+@import './utils/variables';
+@import './base/container';
+@import './base/common';
+@import './components/buttons';
+@import './components/modal-film';
+@import './components/modal-team';
+@import './layout/header';
+@import './layout/main';
+@import './layout/footer';
