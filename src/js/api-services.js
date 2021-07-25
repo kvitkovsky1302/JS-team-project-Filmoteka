@@ -5,7 +5,7 @@ export default class ApiServices {
     this.query = '';
     this.movieId;
   }
-  async fetchSearchMovie() {
+  async fetchFindMovies() {
     const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${this.query}&page=${this.page}`;
     this.updPage();
     const res = await fetch(URL);
@@ -18,7 +18,7 @@ export default class ApiServices {
     const obj = await res.json();
     return await obj;
   }
-  async fetchPopularMovie() {
+  async fetchPopularMovies() {
     const URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${this.page}`;
     this.updPage();
     const res = await fetch(URL);
@@ -45,3 +45,21 @@ export default class ApiServices {
     return this.movieId;
   }
 }
+
+//тестирование запросов
+
+const testApiFetch = new ApiServices();
+
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', () => testApiFetch.fetchPopularMovies());
+
+import debounce from 'lodash.debounce';
+
+const findInput = document.querySelector('.inp');
+findInput.addEventListener(
+  'input',
+  debounce(e => {
+    testApiFetch.currentQuery = e.target.value;
+    testApiFetch.fetchFindMovies();
+  }, 1000),
+);
