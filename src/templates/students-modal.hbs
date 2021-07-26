@@ -1,0 +1,11 @@
+    <ul class="students-list">
+        {{#each this}}
+        <li class="students-item">
+            <img class="students-photo" src="{{urlPhoto}}" alt="" />
+            <p class="students-name">{{name}}</p>
+            <a class="students-linkedin link" href="{{urlLinkedin}}"
+                target="_blank">LinkedIn</a>
+            <a class="students-github link" href="{{urlGithub}}" target="_blank">GitHub</a>
+        </li>
+        {{/each}}
+    </ul>
