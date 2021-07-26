@@ -3,14 +3,6 @@ a {
 }
 
 .header-container {
-  background: rgba(0, 0, 0, 0.56);
-}
-
-.page-header {
-  padding-left: 21px;
-  padding-right: 20px;
-  height: 230px;
-  //   background: rgba(0, 0, 0, 0.56);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -23,7 +15,7 @@ a {
   }
 
   @media screen and (min-width: 768px) {
-    // max-width: 768px;
+
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../img/header-library/rectanglet.jpg');
 
@@ -33,8 +25,8 @@ a {
     }
   }
 
-  @media screen and (max-width: 1024px) {
-    // max-width: 1200px;
+  @media screen and (min-width: 1024px) {
+
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../img/header-library/rectangle.jpg');
 
@@ -43,15 +35,10 @@ a {
         url('../img/header-library/rectangle@2x.jpg');
     }
   }
+}
 
-  @media screen and (min-width: 768px) {
-    padding-left: 71px;
-    padding-right: 76px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    padding-right: 70px;
-  }
+.page-header {
+  height: 230px;
 }
 
 .nav-header {
