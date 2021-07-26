@@ -1,55 +1,43 @@
 [
     {
-        "name":"Kvitkovsky Maxim",
+        "name":"Yurii Yurents",
+        "role": "Team Leader",
+        "urlPhoto":"https://picsum.photos/300/300",
+        "urlLinkedin":"https://www.linkedin.com/in/yuriiyurents/",
+        "urlGithub":"https://github.com/MasterWork1995"
+    },
+    {
+        "name":"Bogdan Lishchuk",
+        "role": "Scrum Master",
+        "urlPhoto":"https://picsum.photos/300/300",
+        "urlLinkedin":"https://www.linkedin.com/in/ksoer/",
+        "urlGithub":"https://github.com/ksoer"
+    },
+    {
+        "name":"Maxim Kvitkovsky",
+        "role": "Developer",
         "urlPhoto":"https://picsum.photos/300/300",
         "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
         "urlGithub":"https://github.com/kvitkovsky1302"
     },
     {
-        "name":"Kvitkovsky Maxim",
+        "name":"Vladislav Kulachko",
+        "role": "Developer",
         "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
+        "urlLinkedin":"www.linkedin.com/in/vladislavkulachko",
+        "urlGithub":"https://github.com/vladislav-kulachko"
     },
     {
-        "name":"Kvitkovsky Maxim",
+        "name":"Olena Olefirenko",
+        "role": "Developer",
         "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
+        "urlLinkedin":"#",
+        "urlGithub":"https://github.com/OlenaOlefirenko"
     },
     {
-        "name":"Kvitkovsky Maxim",
+        "name":"Kateryna Tymoshchuk",
+        "role": "Developer",
         "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
-    },
-    {
-        "name":"Kvitkovsky Maxim",
-        "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
-    },
-    {
-        "name":"Kvitkovsky Maxim",
-        "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
-    },
-    {
-        "name":"Kvitkovsky Maxim",
-        "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
-    },
-    {
-        "name":"Kvitkovsky Maxim",
-        "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
-    },
-    {
-        "name":"Kvitkovsky Maxim",
-        "urlPhoto":"https://picsum.photos/300/300",
-        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
-        "urlGithub":"https://github.com/kvitkovsky1302"
+        "urlLinkedin":"#",
+        "urlGithub":"https://github.com/TKatVol"
     }]

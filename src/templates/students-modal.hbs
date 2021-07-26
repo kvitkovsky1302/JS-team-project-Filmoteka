@@ -1,11 +1,25 @@
-    <ul class="students-list">
-        {{#each this}}
-        <li class="students-item">
-            <img class="students-photo" src="{{urlPhoto}}" alt="" />
-            <p class="students-name">{{name}}</p>
-            <a class="students-linkedin link" href="{{urlLinkedin}}"
-                target="_blank">LinkedIn</a>
-            <a class="students-github link" href="{{urlGithub}}" target="_blank">GitHub</a>
-        </li>
-        {{/each}}
-    </ul>
+    <div class="students-container">
+        <ul class="students-list">
+            {{#each this}}
+            <li class="students-item">
+                <img class="students-photo" src="{{urlPhoto}}" alt="{{name}}" />
+                <div class="students-content">
+                    <p class="students-name">{{name}}</p>
+                    <p class="students-role">{{role}}</p>
+                    <a class="students-linkedin link" href="{{urlLinkedin}}" target="_blank">LinkedIn
+                        <svg class="social-icon">
+                            <use href="./img/sprite.svg#icon-linkedin"></use>
+                        </svg>
+                    </a>
+                    <a class="students-github link" href="{{urlGithub}}" target="_blank">GitHub
+                        <svg class="social-icon">
+                            <use href="./images/sprite.svg#icon-github"></use>
+                        </svg>
+                    </a>
+                </div>
+        
+            </li>
+            {{/each}}
+        </ul>
+
+    </div>
