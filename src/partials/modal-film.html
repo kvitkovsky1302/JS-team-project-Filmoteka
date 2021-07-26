@@ -8,57 +8,48 @@
     <!-- текстова частина модалки -->
     <div class="modal-film__text-cont">
         <h2 class="modal-film__text-cont__name">A FISTFUL OF LEAD</h2>
-        <p class="modal-film__text-cont__vote">Vote / Votes
+        <p class="modal-film__text-cont__left">Vote / Votes
             <span class="modal-film__text-cont__vote-rating">7.3</span>
             /
             <span class="modal-film__text-cont__votes">1260</span>
         </p>
-
-        <p class="modal-film__text-cont__popularity">Popularity
+        <p class="modal-film__text-cont__left">Popularity
             <span class="modal-film__text-cont__popularity-data">100.2</span>
         </p>
 
-        <p class="modal-film__text-cont__title">Original Title
+        <p class="modal-film__text-cont__left">Original Title
             <span class="modal-film__text-cont__title-data">
                 A FISTFUL OF LEAD
             </span>
         </p>
 
-        <p class="modal-film__text-cont__genre">Genre
-            <span class="modal-film__text-cont__genre-data">
+        <p class="modal-film__text-cont__left">Genre
+            <span class="modal-film__text-cont__genre">
                 Western
             </span>
         </p>
-        
-        <p class="modal-film__text-cont__about">About</p>
-        <p class="modal-film__text-cont__about-description">
-            Four of the West’s most infamous outlaws assemble to steal a
-            huge stash of gold from the most corrupt settlement 
-            of the gold rush towns. But not all goes to plan one is killed 
-            and the other three escapes with bags of gold hide out in the 
-            abandoned gold mine where they happen across another gang of 
-            three – who themselves were planning to hit the very same bank!
-            As tensions rise, things go from bad to worse as they realise 
-            the bags of gold are filled with lead... they’ve been double 
-            crossed – but by who and how?
-        </p>
-
+        <div class="modal-film__text-cont__cont">
+            <p class="modal-film__text-cont__about">About</p>
+                <p class="modal-film__text-cont__about-description">
+                    Four of the West’s most infamous outlaws assemble to steal a
+                    huge stash of gold from the most corrupt settlement 
+                    of the gold rush towns. But not all goes to plan one is killed 
+                    and the other three escapes with bags of gold hide out in the 
+                    abandoned gold mine where they happen across another gang of 
+                    three – who themselves were planning to hit the very same bank!
+                    As tensions rise, things go from bad to worse as they realise 
+                    the bags of gold are filled with lead... they’ve been double 
+                    crossed – but by who and how?
+                </p>
+        </div>
             <!-- Кнопки модалки -->
-        <div class="modal-film__text-cont__list-button"></div>
-            <ul class="modal-film__list-button">
-                <li class="modal-film__item-button">
-                    <label class="modal-film__item-button__label">
-                        <input type="checkbox" value="Watched" class="modal-film__item-button__chekbox"/>
-                        <span class="modal-film__item-button_text">Watched</span>
-                    </label>
-                </li>
-                <li class="modal-film__item-button">
-                    <label class="modal-film__item-button__label">
-                        <input type="checkbox" value="Watched" class="modal-film__item-button__chekbox"/>
-                        <span class="modal-film__item-button_text">Queue</span>
-                    </label>    
-                </li>
-            </ul>
+   
+        <button type="button" class="button-modal button-watched" >add to watched</button>
+        <button type="button" class="button-modal" >add to queue</button>
+    
+        
+
+           
     </div>
     
         <button type="button" class="modal-close-btn" data-modal-close>
