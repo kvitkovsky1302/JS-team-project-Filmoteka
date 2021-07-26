@@ -30,7 +30,7 @@ a {
   }
 
   @media screen and (min-width: 960px) {
-    max-width: 1600px;
+    max-width: 1200px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../img/header-library/rectangle.jpg');
 
@@ -124,7 +124,36 @@ a {
   }
 }
 
+.list-button {
+  display: flex;
+  margin-top: 49px;
+  justify-content: center;
+}
+
 .button-library {
-  width: 129px;
+  width: 130px;
   height: 44px;
+  color: #ffffff;
+  background-color: Transparent;
+  border-color: #ffffff;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  @media screen and (min-width: 768px) {
+    width: 136px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b01;
+    border: none;
+  }
+}
+
+.button-library:not(:last-child) {
+  margin-right: 15px;
 }
