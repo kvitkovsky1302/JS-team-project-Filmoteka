@@ -1,0 +1,31 @@
+.basicLightbox__placeholder {
+    background: #ffffff;
+    overflow: scroll;
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+}
+
+.students-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: -15px -10px;
+}
+
+.students-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: calc((100% - 6*10px)/3);
+    margin: 15px 10px;
+    // font-family: inherit;
+    // color: inherit;
+}
+
+.students-photo,
+.students-name,
+.students-linkedin {
+    margin-bottom: 10px;
+}

@@ -27,5 +27,6 @@
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8"
+    "basiclightbox": "^5.0.4"
   }
 }

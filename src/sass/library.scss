@@ -1,19 +1,11 @@
-// UTILS
-
 @import './utils/variables';
-
-// BASE
 
 @import './base/common';
 @import './base/container';
 
-// COMPONENTS
-
 @import './components/buttons';
-@import './components/modal-film';
 @import './components/spinner';
 
-@import './layout/header';
-@import './layout/main';
+@import './layout/header-library';
 @import './layout/footer';
 @import './layout/students';
