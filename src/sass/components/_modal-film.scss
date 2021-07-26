@@ -1,56 +1,152 @@
-@media screen and (max-width: 767px) {
     .modal-film {
       position: relative;
-  
-      background-color: #ffffff;
-      width: 320px;
-      margin-top: 350px;
-    }
+    width: 280px;
+    height: 968px;
+    margin: auto;
+    margin-bottom: 80px;
+    border: 1px solid rgba(0, 0, 0, 0);
   }
-  
-  .genres {
+.modal-film__img-cont{
+  margin: auto;
+  margin-top: 48px;
+  width: 240px;
+  height: 357px;
+  // overflow: hidden;
+  border-radius: 4px;
+}
+
+.modal-film__img{
+  display: block;
+  width: 280px;
+  height: 357px;
+  background-color: black;
+  margin: auto;
+}
+
+  .modal-film__text-cont {
+    margin-top: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 40px;
+ 
+  }
+
+.modal-film__text-cont{
+
+  &__name{
+    font-size: 20px;
+    line-height: 1.17;
+    font-weight: 500;
+    padding-bottom: 20px;
+    // margin-top: 30px;
+    text-transform: uppercase;
+  }
+  &__left{
     display: flex;
-  }
-  
-  .modal-film__img {
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    padding-top: 10px;
-    width: 260px;
-    height: 404px;
-    border-radius: 5px;
+  align-items: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0em;
+    text-align: left;
     
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-      width: 280px;
-      height: 416px;
-    }
+    line-height: 16px;
+    color: #8C8C8C;
+    padding-bottom: 10px;
+  }
+  &__vote-rating{
+  display: inline-block;
+  margin-left: 50px;
+  margin-right: 3px;
+  background-color: #FF6B01;
+  border-radius: 5px;
+  color: #ffffff;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.5;
+  padding: 1px 9px 1px 10px;
+  }
+  &__votes{
+    display: inline-block;
+  margin-left: 3px;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  border-radius: 5px;
+  padding: 1px 4px 1px 4px;
+  text-align: center;
+  line-height: 1.5;
+  }
+  &__popularity-data{
+    margin-left: 63px;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  }
+  &__title-data{
+    margin-left: 50px;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  }
+  &__genre{
+    margin-left: 85px;
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  }
+ 
   }
 
+  .modal-film__text-cont__cont{
+    margin-bottom: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+  }
 
+  .modal-film__text-cont__about{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #000000;
+    padding-top: 10px;
+  }
+.modal-film__text-cont__about-description{
+  padding-top: 10px;
+  font-size: 11px;
+  color: #000000;
+}
 
+.button-modal{
+    all: unset;
+  width: 110px;
+  height: 44px;
+  background-color: white;
+  border: 1px solid black;
+  text-transform: uppercase;
+  font-family: Roboto;
+  
 
+font-weight: 500;
+font-size: 12px;
+line-height: 1.6;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #ff6b08;
+    border: 1px solid #ff6b08;
+    color: #fff;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.button-watched{
+  margin-right: 10px;
+}
 .modal-close-btn {
+  position: relative;
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
     width: 30px;
     height: 30px;
     background: var(--primary-white-color);
@@ -61,6 +157,61 @@
     border: 0;
   }
   .modal-icon-close {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
+  }
+
+  @media screen and (min-width: 768px){
+    .modal-film{
+      margin-bottom: 80px;
+    display: flex;  
+      width: 620px;
+      height: 562px;
+    }
+    .modal-film__img-cont{
+      margin-right: 30px;
+      margin-left: 30px;
+    width: 264px;
+    height: 372px;
+    }
+    .modal-film__img{
+      width: 264px;
+      height: 372px
+    }
+
+    .modal-film__text-cont{
+      width: 295px;
+    }
+
+    .modal-film__text-cont__name{
+      margin: 4px 0 22px;
+    font-size: 30px;
+    }
+
+    .button-modal{
+    width: 125px;
+    height: 44px;
+  }
+    .button-watched{
+      margin-right: 15px;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    .modal-film{
+      width: 882px;
+    }
+
+    .modal-film__img-cont{
+      width: 396px;
+    height: 477px;
+    }
+
+    .modal-film__img{
+      width: 396px;
+    height: 477px;
+    }
+    .modal-film__text-cont{
+      width: 423px;
+    }
   }
