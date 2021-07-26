@@ -14,15 +14,14 @@ const spinner = basicLightbox.create(markup);
 
 export default { spinner };
 
-// ПОКАЗАТЬ спиннер - spinner.show();
-// ЗАКРЫТЬ  спиннер - spinner.close();
+// ПОКАЗАТИ спінер - spinner.show();
+// ЗАКРИТИ  спінер - spinner.close();
 
-// // Как пример - спиннер пока срабатывает при клике на копирайт
-const copyrightContainer = document.querySelector('.dev__link');
+// Приклад = клік футер копірайт.
+// const copyrightContainer = document.querySelector('.copyright');
 
-copyrightContainer.addEventListener('click', onLoadingSpinner);
+// copyrightContainer.addEventListener('click', onLoadingSpinner);
 
-function onLoadingSpinner() {
-    spinner.show();
-    console.log('j')
-}
+// function onLoadingSpinner() {
+//     spinner.show();
+// }
