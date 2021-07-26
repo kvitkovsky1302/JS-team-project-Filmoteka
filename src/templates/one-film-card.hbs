@@ -1,0 +1,15 @@
+{{#each this}}
+  <li class='film-list__item'>
+    <article id={{id}} class='film-list__box'>
+      <div class='film-list__box-image'>
+          <img class="film-list__image" src={{poster_path}} alt={{title}}'movie poster' />
+          </div>
+          <div class="film-list__box-info" >
+              <h2 class="film-list__box-info-title" >{{title}}</h2>
+              <p class="film-list__box-info-main" >
+                  <span class="film-list__box-info-genre" >{{#each genre_ids}}{{this}}{{/each}}, </span>
+                  <span class="film-list__box-info-date" >{{release_date}}</span>
+              </p>
+          </div>
+    </article>
+  </li>{{/each}}
