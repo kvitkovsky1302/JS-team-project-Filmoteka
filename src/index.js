@@ -1,5 +1,6 @@
 import './sass/main.scss';
-
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
+import './js/spinner'
 
 const refs = {
     studentGoit: document.querySelector('.dev__link'),
