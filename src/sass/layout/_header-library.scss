@@ -11,32 +11,32 @@ a {
   background-position: center;
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../img/header/rectanglem.jpg');
+    url('../img/header-library/rectanglem.jpg');
 
   @media screen and (min-resolution: 2dppx) {
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../img/header/rectanglem@2x.jpg');
+      url('../img/header-library/rectanglem@2x.jpg');
   }
 
   @media screen and (min-width: 576px) {
     max-width: 768px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../img/header/rectangled.jpg');
+      url('../img/header-library/rectanglet.jpg');
 
     @media screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../img/header/rectangled@2x.jpg');
+        url('../img/header-library/rectanglet@2x.jpg');
     }
   }
 
   @media screen and (min-width: 960px) {
     max-width: 1600px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../img/header/rectangle.jpg');
+      url('../img/header-library/rectangle.jpg');
 
     @media screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../img/header/rectangle@2x.jpg');
+        url('../img/header-library/rectangle@2x.jpg');
     }
   }
 
@@ -124,59 +124,7 @@ a {
   }
 }
 
-.header-form {
-  text-align: center;
-}
-
-.header-label {
-  position: relative;
-}
-
-.form-text {
-  display: inline-block;
-  margin: 37px auto 0 auto;
-  width: 100%;
-  max-width: 280px;
-  background: none;
-  border: none;
-  border-bottom: 0.5px solid #ffffff;
-  color: #ffffff;
-  margin-bottom: 22px;
-
-  &::placeholder {
-    color: #ffffff;
-    font-size: 14px;
-    line-height: 16px;
-    font-weight: 400;
-    font-style: normal;
-    opacity: 1;
-  }
-
-  &:focus::placeholder {
-    opacity: 0;
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .form-text {
-    max-width: 318px;
-  }
-}
-
-.header-button {
-  position: absolute;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  height: 18px;
-  width: 18px;
-  background: none;
-  border: none;
-  top: 0px;
-  right: -3px;
+.button-library {
+  width: 129px;
+  height: 44px;
 }
