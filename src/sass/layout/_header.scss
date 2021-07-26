@@ -1,15 +1,18 @@
 a {
   text-decoration: none;
 }
+.header-container {
+  background: rgba(0, 0, 0, 0.56);
+}
 
 .page-header {
   padding-left: 21px;
   padding-right: 20px;
   height: 230px;
-  background: rgba(0, 0, 0, 0.56);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url('../img/header/rectanglem.jpg');
 
@@ -18,8 +21,8 @@ a {
       url('../img/header/rectanglem@2x.jpg');
   }
 
-  @media screen and (min-width: 576px) {
-    max-width: 768px;
+  @media screen and (min-width: 768px) {
+    // max-width: 768px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../img/header/rectangled.jpg');
 
@@ -29,8 +32,8 @@ a {
     }
   }
 
-  @media screen and (min-width: 960px) {
-    max-width: 1600px;
+  @media screen and (max-width: 1024px) {
+    // max-width: 1024px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url('../img/header/rectangle.jpg');
 
