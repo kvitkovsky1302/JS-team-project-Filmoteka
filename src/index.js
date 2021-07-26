@@ -10,17 +10,20 @@ const refs = {
 
 refs.studentGoit.addEventListener('click', onToggleModal);
 refs.backdrop.addEventListener('click', onToggleModal);
-window.addEventListener('keydown', onCloseModal);
-refs.modal.addEventListener('click', stopPropagation);
+
 
 
 function onToggleModal(e) {
     refs.backdrop.classList.toggle('is-hidden');
+    window.addEventListener('keydown', onCloseModal);
+    refs.modal.addEventListener('click', stopPropagation);
 }
 
 function onCloseModal(e) {
     if (e.key === "Escape") {
-        refs.backdrop.classList.toggle('is-hidden');
+        refs.backdrop.classList.add('is-hidden');
+        window.removeEventListener('keydown', onCloseModal);
+        refs.modal.removeEventListener('click', stopPropagation);
     }
 }
 
