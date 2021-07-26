@@ -18,6 +18,15 @@ refs.studentGoit.addEventListener('click', onOpenModal);
 function onOpenModal() {
     // refs.studentGoit.insertAdjacentHTML('beforeend', markupStudentsModal);
     instance.show()
+
+    window.addEventListener('keydown', onCloseModal);
+
+    function onCloseModal(event) {
+        if (event.code === 'Escape') {
+            instance.close();
+            window.removeEventListener('keydown', onCloseModal)
+        };
+    };
 }
 
 
