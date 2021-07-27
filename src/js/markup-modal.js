@@ -9,14 +9,16 @@ const refs = {
     libraryList: document.querySelector('.js-library-list'),
 }
 
+const wachedFilmsId = JSON.parse(localStorage.getItem('wachedFilms'));
+
 const filmsId = {
-    idWachedFilm: [],
-    idQueueFilm: [],
+    idWachedFilm: wachedFilmsId,
+    // idQueueFilm: [],
 }
 
 const apiServices = new ApiServices();
 
-refs.filmsList.addEventListener('click', onOpenModalCard);
+// refs.filmsList.addEventListener('click', onOpenModalCard);
 refs.libraryList.addEventListener('click', onOpenModalCard);
 
 
@@ -28,7 +30,7 @@ async function onOpenModalCard(e) {
     const instance = basicLightbox.create(markupModalCard);
 
     instance.show();
-
+    
     const modalFilm = document.querySelector('.modal-film');
 
     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
@@ -48,10 +50,14 @@ function onAddFilmToLocalStorage(e) {
     const addToWachedBtn = document.querySelector('.js-wached');
     const addToQueueBtn = document.querySelector('.js-queue');
     
-        if (e.target === addToWachedBtn) {
+    if (e.target === addToWachedBtn) {
+        if (localStorage.getItem('wachedFilms')) {
             filmsId.idWachedFilm.push(e.currentTarget.id);
-            localStorage.setItem('wachedFilms', JSON.stringify(filmsId.idWachedFilm));
+        } else {
+            filmsId.idWachedFilm = [e.currentTarget.id];
         }
+        localStorage.setItem('wachedFilms', JSON.stringify(filmsId.idWachedFilm));
+    }
         
         if (e.target === addToQueueBtn) {
             filmsId.idQueueFilm.push(e.currentTarget.id);
@@ -61,16 +67,15 @@ function onAddFilmToLocalStorage(e) {
 
 const parseFilms = JSON.parse(localStorage.getItem('wachedFilms'));
 if (parseFilms) {
-    
     parseFilms.forEach(loadWachedFilm);
 }
 
 async function loadWachedFilm(element) {
     apiServices.movieId = element;
-  const films = await apiServices.fetchDetailedMovie();
-  parseMarkup(films);
+    const films = await apiServices.fetchDetailedMovie();
+    parseMarkup(films);
 };
 
 function parseMarkup(films) {
-  refs.libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
+    refs.libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
