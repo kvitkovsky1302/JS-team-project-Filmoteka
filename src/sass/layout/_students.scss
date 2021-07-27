@@ -70,11 +70,13 @@
 }
 
 .students-name {
+  font-size: 10px;
   color: $textLightColor;
 }
 
 .students-role {
   color: $accentColor;
+  font-size: 10px;
 }
 
 .students-name,
@@ -116,7 +118,7 @@
 
 @media screen and (min-width: 768px) {
   .students-container {
-    width: 400px;
+    width: 500px;
     overflow: hidden;
   }
 
@@ -124,8 +126,45 @@
     flex-basis: calc(100% / 3 - 10px);
   }
 
+  .students-photo {
+    width: 100px;
+    height: 100px;
+  }
+
   .students-name,
   .students-role {
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .students-linkedin,
+  .students-github {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .students-container {
+    width: 800px;
+  }
+
+  .students-item {
+    flex-basis: calc(100% / 4 - 10px);
+  }
+
+  .students-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .students-name,
+  .students-role {
+    font-size: 14px;
+  }
+
+  .students-linkedin,
+  .students-github {
+    width: 24px;
+    height: 24px;
   }
 }
