@@ -23,7 +23,7 @@ const filmsContainer = document.querySelector('.films-list');
 const searchInput = document.querySelector('.form-text');
 const loadMoreBtn = document.querySelector('.header-button');
 // loadMoreBtn.addEventListener('click', onLoadMore);
-searchInput.addEventListener('input', debounce(inputHandler, 1000));
+searchInput.addEventListener('input', debounce(inputHandler, 500));
 
 const filmApiServices = new ApiServices();
 
