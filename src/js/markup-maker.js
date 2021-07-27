@@ -13,13 +13,13 @@ defaults.delay = '4000';
 const myStack = new Stack({
   dir1: 'down',
   dir2: 'right',
-  firstpos1: 5,
-  firstpos2: 5,
+  firstpos1: 125,
+  firstpos2: 10,
   push: 'bottom',
   context: document.body,
 });
 
-const filmsContainer = document.querySelector('.film-list');
+const filmsContainer = document.querySelector('.films-list');
 const searchInput = document.querySelector('.form-text');
 const loadMoreBtn = document.querySelector('.header-button');
 // loadMoreBtn.addEventListener('click', onLoadMore);
