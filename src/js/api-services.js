@@ -48,18 +48,18 @@ export default class ApiServices {
 
 //тестирование запросов
 
-const testApiFetch = new ApiServices();
+// const testApiFetch = new ApiServices();
 
-const btn = document.querySelector('.btn');
-btn.addEventListener('click', () => testApiFetch.fetchPopularMovies());
+// const btn = document.querySelector('.btn');
+// btn.addEventListener('click', () => testApiFetch.fetchPopularMovies());
 
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 
-const findInput = document.querySelector('.inp');
-findInput.addEventListener(
-  'input',
-  debounce(e => {
-    testApiFetch.currentQuery = e.target.value;
-    testApiFetch.fetchFindMovies();
-  }, 1000),
-);
+// const findInput = document.querySelector('.inp');
+// findInput.addEventListener(
+//   'input',
+//   debounce(e => {
+//     testApiFetch.currentQuery = e.target.value;
+//     testApiFetch.fetchFindMovies();
+//   }, 1000),
+// );
