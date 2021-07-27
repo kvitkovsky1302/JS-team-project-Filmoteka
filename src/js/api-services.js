@@ -25,6 +25,13 @@ export default class ApiServices {
     const obj = await res.json();
     return await obj.results;
   }
+  async fetchGenreMovies() {
+    const URL = `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`;
+    this.updPage();
+    const res = await fetch(URL);
+    const obj = await res.json();
+    return await obj;
+  }
   clearRes() {
     this.page = 1;
   }
