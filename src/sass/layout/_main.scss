@@ -1,46 +1,46 @@
-.films-container {
-  padding: 60px 71px 60px 71px;
-}
-.films-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  align-content: flex-start;
-  list-style: none;
-  margin: -15px;
-}
-.films-list__item {
-  margin: 15px;
-  width: calc((100% - 180px) / 3);
-}
-// .film-list__box {
-
+// .films-container {
+//   padding: 60px 71px 60px 71px;
 // }
-.film-list__box-image {
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  transform: scale(1);
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+// .films-list {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-items: flex-start;
+//   align-content: flex-start;
+//   list-style: none;
+//   margin: -15px;
+// }
+// .films-list__item {
+//   margin: 15px;
+//   width: calc((100% - 180px) / 3);
+// }
+// // .film-list__box {
 
-  &:hover,
-  &:focus {
-    transform: scale(0.9);
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-      1px 4px 6px rgba(0, 0, 0, 0.16);
-  }
-  border-radius: 4px;
-  height: 400px;
-  width: 100%;
-  overflow: hidden;
-}
-.film-list__image {
-  object-fit: cover;
-}
-.film-list__box-info {
-  font-size: 12px;
-}
-.film-list__box-info-title {
-  margin: 10px 0 10px 0;
-}
+// // }
+// .film-list__box-image {
+//   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+//     0px 2px 1px rgba(0, 0, 0, 0.2);
+//   transform: scale(1);
+//   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+//     transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+//   &:hover,
+//   &:focus {
+//     transform: scale(0.9);
+//     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+//       1px 4px 6px rgba(0, 0, 0, 0.16);
+//   }
+//   border-radius: 4px;
+//   height: 400px;
+//   width: 100%;
+//   overflow: hidden;
+// }
+// .film-list__image {
+//   object-fit: cover;
+// }
+// .film-list__box-info {
+//   font-size: 12px;
+// }
+// .film-list__box-info-title {
+//   margin: 10px 0 10px 0;
+// }
