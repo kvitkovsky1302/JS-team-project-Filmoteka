@@ -1,31 +1,131 @@
-.basicLightbox__placeholder {
-    background: #ffffff;
-    overflow: scroll;
-    width: 80%;
-    height: 80%;
-    padding: 20px;
+.students-container {
+  width: 300px;
+  padding: 10px;
+  overflow: scroll;
+  border-radius: 30px;
+  border: 2px solid $accentColor;
+  background: linear-gradient(
+      45deg,
+      rgb(207, 154, 184) 26%,
+      rgb(86, 181, 184) 100%,
+      rgb(208, 242, 237) 100%
+    )
+    fixed;
 }
 
 .students-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin: -15px -10px;
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-left: -10px;
+  margin-top: -10px;
 }
 
 .students-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: calc((100% - 6*10px)/3);
-    margin: 15px 10px;
-    // font-family: inherit;
-    // color: inherit;
+  flex-basis: calc(100% / 2 - 10px);
+
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
-.students-photo,
+.students-photo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  background-size: cover;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.2);
+    border: 2px solid $accentColor;
+  }
+}
+
+.photo-1 {
+  background-image: url('../img/team/yurii.jpg');
+}
+
+.photo-2 {
+  background-image: url('../img/team/bogdan.jpg');
+}
+
+.photo-3 {
+  background-image: url('../img/team/maxim.jpg');
+}
+
+.photo-4 {
+  background-image: url('../img/team/vladislav.jpg');
+}
+
+.photo-5 {
+  background-image: url('../img/team/olena.jpg');
+}
+
+.photo-6 {
+  background-image: url('../img/team/kateryna.jpg');
+}
+
+.students-name {
+  color: $textLightColor;
+}
+
+.students-role {
+  color: $accentColor;
+}
+
 .students-name,
+.students-role {
+  margin-bottom: 5px;
+}
+
+.students-content {
+  padding: 5px;
+  text-align: center;
+}
+
+.students-linkedin,
+.students-github {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.2);
+    background-color: $accentColor;
+  }
+}
+
 .students-linkedin {
-    margin-bottom: 10px;
+  margin-right: 5px;
+
+  background-size: cover;
+  background-image: url('../img/team/linkedin.png');
+}
+
+.students-github {
+  background-size: cover;
+  background-image: url('../img/team/github.png');
+}
+
+@media screen and (min-width: 768px) {
+  .students-container {
+    width: 400px;
+    overflow: hidden;
+  }
+
+  .students-item {
+    flex-basis: calc(100% / 3 - 10px);
+  }
+
+  .students-name,
+  .students-role {
+    font-size: 10px;
+  }
 }
