@@ -1,0 +1,58 @@
+<div class="modal-film">
+
+    <!-- постер фільму (картинка) модалка -->
+    <div class="modal-film__img-cont">
+        <img 
+        class="modal-film__img" 
+        src="https://image.tmdb.org/t/p/w342{{poster_path}}" 
+        alt="{{title}} movie poster" />
+    </div>
+
+    <!-- текстова частина модалки -->
+    <div class="modal-film__text-cont">
+        <h2 class="modal-film__text-cont__name">{{title}}</h2>
+        <p class="modal-film__text-cont__left">Vote / Votes
+            <span class="modal-film__text-cont__vote-rating">{{vote_average}}</span>
+            /
+            <span class="modal-film__text-cont__votes">{{vote_count}}</span>
+        </p>
+        <p class="modal-film__text-cont__left">Popularity
+            <span class="modal-film__text-cont__popularity-data">{{popularity}}</span>
+        </p>
+
+        <p class="modal-film__text-cont__left">Original Title
+            <span class="modal-film__text-cont__title-data">
+                {{original_title}}
+            </span>
+        </p>
+
+        <p class="modal-film__text-cont__left">Genre
+            {{#each genres}}
+            <span class="modal-film__text-cont__genre">
+                {{this.name}}
+            </span>
+            {{/each}}
+        </p>
+        <div class="modal-film__text-cont__cont">
+            <p class="modal-film__text-cont__about">About</p>
+            <p class="modal-film__text-cont__about-description">
+                {{overview}}
+            </p>
+        </div>
+        <!-- Кнопки модалки -->
+
+        <button type="button" class="button-modal button-watched">add to watched</button>
+        <button type="button" class="button-modal">add to queue</button>
+
+
+
+
+    </div>
+
+    <button type="button" class="modal-close-btn" data-modal-close>
+        <svg class="modal-icon-close">
+            <use href="../src/img/sprite.svg#close"></use>
+        </svg>
+    </button>
+
+</div>
