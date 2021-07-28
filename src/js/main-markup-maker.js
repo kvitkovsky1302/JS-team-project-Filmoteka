@@ -23,8 +23,6 @@ const myStack = new Stack({
 
 const filmsContainer = document.querySelector('.films-list');
 const searchInput = document.querySelector('.form-text');
-// const loadMoreBtn = document.querySelector('.header-button');
-// loadMoreBtn.addEventListener('click', onLoadMore);
 const filmsList = document.querySelector('.films-list');
 filmsList.addEventListener('click', onOpenModalCard);
 searchInput.addEventListener('input', debounce(inputHandler, 500));
@@ -36,7 +34,7 @@ function parseMarkup(films) {
 }
 
 async function loadPopFilms() {
-  const films = await apiServices.fetchPopularMovies();
+  const films = await apiServices.createPopMovieGenres();
   filmsContainer.innerHTML = '';
   parseMarkup(films);
 }

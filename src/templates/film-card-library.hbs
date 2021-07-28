@@ -7,8 +7,13 @@
         <div class='film-list__box-info'>
             <h2 class='film-list__box-info-title'>{{title}}</h2>
             <p class='film-list__box-info-main'>
-                <span class='film-list__box-info-genre'>{{#each genres}}{{this.name}}, {{/each}}/</span>
-                <span class='film-list__box-info-date'>{{release_date}}</span>
+                {{!-- <span class='film-list__box-info-genre'>{{#each genres}}{{this.name}}, {{/each}}/</span> --}}
+                <ul class='film-list__box-list-genres'>
+                    {{#each genres}}
+                    <li class='film-list__box-info-genre'>{{this.name}}</li>
+                    {{/each}}/
+                </ul>
+                <span class='film-list__box-info-date'>{{year}}</span>
             </p>
         </div>
     </article>

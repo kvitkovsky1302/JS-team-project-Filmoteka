@@ -40,6 +40,10 @@
   font-family: 'Roboto';
 }
 
+.film-list__box-info-genre:not(:last-child):after {
+  content: ',';
+}
+
 .film-thumb {
   display: flex;
   padding-left: 5px;
@@ -64,6 +68,8 @@
   line-height: 1.5;
   padding: 1px 9px 1px 10px;
 }
+// .film-list__box-list-genres {
+// }
 
 @media screen and (min-width: 768px) {
   .films-list {

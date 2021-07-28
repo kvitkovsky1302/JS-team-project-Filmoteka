@@ -139,7 +139,8 @@ a {
   }
 
   &:hover,
-  &:focus {
+  &:focus,
+  &.focus {
     background-color: #ff6b01;
     border: none;
   }
