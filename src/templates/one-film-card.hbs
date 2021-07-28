@@ -12,8 +12,12 @@
         <h2 class='film-list__box-info-title'>{{title}}</h2>
         <div class='film-thumb'>
           <p class='film-list__box-info-main'>
-            <span class='film-list__box-info-genre'>{{#each genre_ids}}{{this}}, {{/each}}|</span>
-            <span class='film-list__box-info-date'>{{release_date}}</span>
+            <ul class='film-list__box-list-genres'>
+            {{#each genres}}
+              <li class='film-list__box-info-genre'>{{name}}</li>
+            {{/each}}
+            </ul>
+            <span class='film-list__box-info-date'>| {{year}}</span>
             <span class='rating'>{{vote_average}}</span>
           </p>
         </div>
