@@ -76,6 +76,9 @@ let instance;
 let modalFilm;
 
 export function onOpenModalCard(e) {
+  if (e.target.nodeName !== 'IMG') {
+    return
+  }
   apiServices.movieId = e.target.parentNode.parentNode.id;
   (async () => {
     const film = await apiServices.fetchDetailedMovie();
