@@ -10,14 +10,14 @@
       </div>
       <div class='film-list__box-info'>
         <h2 class='film-list__box-info-title'>{{title}}</h2>
-        <div class="film-thumb">
-           <p class='film-list__box-info-main'>
-          <span class='film-list__box-info-genre'>{{#each genre_ids}}{{this}}, {{/each}}|</span>
-          <span class='film-list__box-info-date'>{{release_date}}</span>
-          <span class="rating" >10.0</span>
-        </p>
+        <div class='film-thumb'>
+          <p class='film-list__box-info-main'>
+            <span class='film-list__box-info-genre'>{{#each genre_ids}}{{this}}, {{/each}}|</span>
+            <span class='film-list__box-info-date'>{{release_date}}</span>
+            <span class='rating'>{{vote_average}}</span>
+          </p>
         </div>
       </div>
     </article>
   </li>
-  {{/each}}
+{{/each}}
