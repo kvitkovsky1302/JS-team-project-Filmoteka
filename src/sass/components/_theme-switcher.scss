@@ -7,11 +7,13 @@
 }
 
 body.light-theme {
+  color: $backgroundColorDark;
   background-color: $backgroundColorLight;
 }
 
 body.dark-theme {
   background-color: $backgroundColorDark;
+  color: $textLightColor;
 }
 
 .footer.light-theme {
