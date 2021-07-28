@@ -13,14 +13,14 @@ btnLibWatched.addEventListener('click', () => parseWatchedFilmsMarkup());
 btnLibQueue.addEventListener('click', () => parseQueueFilmsMarkup());
 
 function parseWatchedFilmsMarkup() {
-  if (parsedWatchedFilmsIds.length !== 0) {
+  if (parsedWatchedFilmsIds) {
     libraryList.innerHTML = '';
     parsedWatchedFilmsIds.forEach(loadWachedFilm);
   } else return;
 }
 
 function parseQueueFilmsMarkup() {
-  if (parsedQueueFilmsIds.length !== 0) {
+  if (parsedQueueFilmsIds) {
     libraryList.innerHTML = '';
     parsedQueueFilmsIds.forEach(loadWachedFilm);
   } else return;
