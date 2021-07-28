@@ -31,9 +31,10 @@
 .film-list__box-info-title {
   margin: 0;
   margin-top: 12px;
+  margin-bottom: 6px;
   padding-left: 5px;
   font-size: 12px;
-  line-height: 1.3;
+  line-height: 1.333;
   text-transform: uppercase;
   font-family: 'Roboto';
 }
@@ -46,12 +47,18 @@
   }
 }
 
+.film-list__box-info-date {
+  margin-bottom: 10px;
+}
+
 .film-thumb {
   display: flex;
   align-items: center;
   padding-left: 5px;
   font-family: 'Roboto';
   font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333;
   color: $accentColor;
 }
 
@@ -64,6 +71,7 @@
   font-weight: 600;
   margin-bottom: 20px;
 }
+
 .rating {
   background-color: #ff6b01;
   border-radius: 5px;
@@ -72,12 +80,15 @@
   text-align: center;
   line-height: 1.5;
   padding: 1px 9px 1px 10px;
+
   margin-left: auto;
+  margin-bottom: 10px;
   margin-right: 5px;
-  margin-bottom: 5px;
 }
+
 .film-list__box-list-genres {
   display: flex;
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 768px) {
