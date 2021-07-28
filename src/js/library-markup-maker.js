@@ -33,7 +33,7 @@ function parseQueueFilmsMarkup() {
 function loadWachedFilm(id) {
   apiServices.movieId = id;
   (async () => {
-    const films = await apiServices.fetchDetailedMovie();
+    const films = await apiServices.createDetailedMovieYear();
     parseOneCardMarkup(films);
   })();
 }

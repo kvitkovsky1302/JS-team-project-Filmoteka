@@ -52,7 +52,7 @@ function inputHandler(e) {
   apiServices.currentQuery = query;
   if (query) {
     (async () => {
-      const films = await apiServices.fetchFindMovies();
+      const films = await apiServices.createFindMovieGenres();
       filmsContainer.innerHTML = '';
       parseMarkup(films);
       if (films.length === 0) {
