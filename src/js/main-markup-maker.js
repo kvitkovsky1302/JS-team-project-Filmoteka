@@ -73,6 +73,7 @@ function inputHandler(e) {
 //------------------------------------------modal parse------------------------------------------
 
 let instance;
+let modalFilm;
 
 export function onOpenModalCard(e) {
   apiServices.movieId = e.target.parentNode.parentNode.id;
@@ -82,9 +83,7 @@ export function onOpenModalCard(e) {
 
     instance = basicLightbox.create(markupModalCard);
     instance.show();
-    // const addToWachedBtn = document.querySelector('.js-wached');
-    // const addToQueueBtn = document.querySelector('.js-queue');
-    const modalFilm = document.querySelector('.modal-film');
+    modalFilm = document.querySelector('.modal-film');
     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
   })();
 
@@ -101,20 +100,18 @@ function onCloseModal(e) {
 
 //------------------------------------------local storage----------------------------------------------------
 
-const watchedFilmsIds = [];
-const queueFilmsIds = [];
-const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
-const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
+const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
+const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
 function onAddFilmToLocalStorage(e) {
   if (e.target.classList.contains('js-wached')) {
-    if (!watchedFilmsIds.includes(e.currentTarget.id)) {
+    if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
       watchedFilmsIds.push(e.currentTarget.id);
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
     } else return;
   }
 
   if (e.target.classList.contains('js-queue')) {
-    if (!queueFilmsIds.includes(e.currentTarget.id)) {
+    if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
       queueFilmsIds.push(e.currentTarget.id);
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
     } else return;
