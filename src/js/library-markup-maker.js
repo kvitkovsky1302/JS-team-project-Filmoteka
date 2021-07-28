@@ -23,7 +23,7 @@ function parseWatchedFilmsMarkup() {
 function parseQueueFilmsMarkup() {
   if (parsedQueueFilmsIds) {
     libraryList.innerHTML = '';
-    btnLibWatched.classList.remove('focus');
+    btnLibWatched.classList.re('focus');
     parsedQueueFilmsIds.forEach(loadWachedFilm);
   } else return;
 }
@@ -31,7 +31,7 @@ function parseQueueFilmsMarkup() {
 function loadWachedFilm(id) {
   apiServices.movieId = id;
   (async () => {
-    const films = await apiServices.fetchDetailedMovie();
+    const films = await apiServices.createDetailedMovieYear();
     parseOneCardMarkup(films);
   })();
 }
