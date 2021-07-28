@@ -100,8 +100,8 @@ function onCloseModal(e) {
 
 //------------------------------------------local storage----------------------------------------------------
 
-const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
-const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
+const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
+const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
 function onAddFilmToLocalStorage(e) {
   if (e.target.classList.contains('js-wached')) {
     if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
