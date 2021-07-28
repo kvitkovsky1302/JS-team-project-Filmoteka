@@ -34,7 +34,7 @@ const lightTheme = () => {
 const darkTheme = () => {
     localStorage.setItem('Theme', 'dark');
     document.body.classList.remove('light-theme');
-    footerThemeColor.classList.remove('light-theme');
+    footerThemeColor.classList.remove('light-theme');    
     document.body.classList.add('dark-theme');
     footerThemeColor.classList.add('dark-theme');
 }
