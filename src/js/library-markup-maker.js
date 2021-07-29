@@ -6,6 +6,7 @@ const apiServices = new ApiServices();
 const libraryList = document.querySelector('.js-library-list');
 const btnLibWatched = document.querySelector('.js-button-library-watched');
 const btnLibQueue = document.querySelector('.js-button-library-queue');
+
 const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
 const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
 
@@ -46,3 +47,7 @@ function parseOneCardMarkup(films) {
   libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
 parseWatchedFilmsMarkup();
+
+// import { onOpenModalFilmCard as onOpenModalFilmCardLib } from '../js/main-markup-maker.js';
+
+// libraryList.addEventListener('click', onOpenModalFilmCardLib);

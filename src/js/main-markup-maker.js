@@ -21,16 +21,15 @@ const myStack = new Stack({
   context: document.body,
 });
 
-const filmsContainer = document.querySelector('.films-list');
+const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
-const filmsList = document.querySelector('.films-list');
-filmsList.addEventListener('click', onOpenModalCard);
+filmsList.addEventListener('click', onOpenModalFilmCard);
 searchInput.addEventListener('input', debounce(inputHandler, 500));
 
 const apiServices = new ApiServices();
 
 function parseMarkup(films) {
-  filmsContainer.insertAdjacentHTML('beforeend', createFilmCard(films));
+  filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
 
 function createMovies(returnedFetchMovies, returnedFetchGenres) {
@@ -40,7 +39,6 @@ function createMovies(returnedFetchMovies, returnedFetchGenres) {
       movie.genres = movie.genre_ids
         .map(id => returnedFetchGenres.filter(el => el.id === id))
         .flat();
-      console.log(movie.genres);
     }
     if (movie.genre_ids.length > 3) {
       movie.genres = movie.genre_ids
@@ -61,7 +59,7 @@ function loadPopFilms() {
     const fetchPopMovies = await apiServices.fetchPopularMovies();
     const fetchGenMovies = await apiServices.fetchGenreMovies();
     const films = createMovies(fetchPopMovies, fetchGenMovies);
-    filmsContainer.innerHTML = '';
+    filmsList.innerHTML = '';
     parseMarkup(films);
   })();
 }
@@ -73,7 +71,7 @@ function inputHandler(e) {
   query = e.target.value;
   apiServices.clearRes();
   if (query === '') {
-    filmsContainer.innerHTML = '';
+    filmsList.innerHTML = '';
     loadPopFilms();
   }
   apiServices.currentQuery = query;
@@ -83,7 +81,7 @@ function inputHandler(e) {
       const fetchGenMovies = await apiServices.fetchGenreMovies();
       const films = createMovies(fetchFindMovies, fetchGenMovies);
 
-      filmsContainer.innerHTML = '';
+      filmsList.innerHTML = '';
       parseMarkup(films);
       if (films.length === 0) {
         error({
@@ -103,7 +101,7 @@ function inputHandler(e) {
 let instance;
 let modalFilm;
 
-export function onOpenModalCard(e) {
+function onOpenModalFilmCard(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
   }
@@ -124,13 +122,13 @@ export function onOpenModalCard(e) {
     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
   })();
 
-  window.addEventListener('keydown', onCloseModal);
+  window.addEventListener('keydown', onCloseModalFilmCard);
 }
 
-function onCloseModal(e) {
+function onCloseModalFilmCard(e) {
   if (e.code === 'Escape') {
     instance.close();
-    window.removeEventListener('keydown', onCloseModal);
+    window.removeEventListener('keydown', onCloseModalFilmCard);
     modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
   }
 }
