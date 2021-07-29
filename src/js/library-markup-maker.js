@@ -6,6 +6,7 @@ const apiServices = new ApiServices();
 const libraryList = document.querySelector('.js-library-list');
 const btnLibWatched = document.querySelector('.js-button-library-watched');
 const btnLibQueue = document.querySelector('.js-button-library-queue');
+
 const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
 const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
 
@@ -17,7 +18,7 @@ function parseWatchedFilmsMarkup() {
     libraryList.innerHTML = '';
     btnLibWatched.classList.add('focus');
     btnLibQueue.classList.remove('focus');
-    parsedWatchedFilmsIds.forEach(loadWachedFilm);
+    parsedWatchedFilmsIds.forEach(loadFilm);
   } else return;
 }
 
@@ -26,18 +27,27 @@ function parseQueueFilmsMarkup() {
     libraryList.innerHTML = '';
     btnLibWatched.classList.remove('focus');
     btnLibQueue.classList.add('focus');
-    parsedQueueFilmsIds.forEach(loadWachedFilm);
+    parsedQueueFilmsIds.forEach(loadFilm);
   } else return;
 }
 
-function loadWachedFilm(id) {
+function loadFilm(id) {
   apiServices.movieId = id;
   (async () => {
-    const films = await apiServices.createDetailedMovieYear();
-    parseOneCardMarkup(films);
+    const detailMovie = await apiServices.fetchDetailedMovie();
+    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
+
+    if (detailMovie.genres.length > 3) {
+      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
+    }
+    parseOneCardMarkup(detailMovie);
   })();
 }
 function parseOneCardMarkup(films) {
   libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
 parseWatchedFilmsMarkup();
+
+// import { onOpenModalFilmCard as onOpenModalFilmCardLib } from '../js/main-markup-maker.js';
+
+// libraryList.addEventListener('click', onOpenModalFilmCardLib);
