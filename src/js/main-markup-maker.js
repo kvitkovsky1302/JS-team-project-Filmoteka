@@ -33,10 +33,37 @@ function parseMarkup(films) {
   filmsContainer.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
 
-async function loadPopFilms() {
-  const films = await apiServices.createPopMovieGenres();
-  filmsContainer.innerHTML = '';
-  parseMarkup(films);
+function createMovies(returnedFetchMovies, returnedFetchGenres) {
+  return returnedFetchMovies.map(movie => {
+    movie.year = movie.release_date ? movie.release_date.split('-')[0] : 'n/a';
+    if (movie.genre_ids.length > 0 && movie.genre_ids.length <= 3) {
+      movie.genres = movie.genre_ids
+        .map(id => returnedFetchGenres.filter(el => el.id === id))
+        .flat();
+      console.log(movie.genres);
+    }
+    if (movie.genre_ids.length > 3) {
+      movie.genres = movie.genre_ids
+        .map(id => returnedFetchGenres.filter(el => el.id === id))
+        .slice(0, 2)
+        .flat()
+        .concat({ name: 'Other' });
+    }
+    if (movie.genre_ids.length === 0) {
+      movie.genres = [{ name: 'n/a' }];
+    }
+    return movie;
+  });
+}
+
+function loadPopFilms() {
+  (async () => {
+    const fetchPopMovies = await apiServices.fetchPopularMovies();
+    const fetchGenMovies = await apiServices.fetchGenreMovies();
+    const films = createMovies(fetchPopMovies, fetchGenMovies);
+    filmsContainer.innerHTML = '';
+    parseMarkup(films);
+  })();
 }
 loadPopFilms();
 
@@ -52,7 +79,10 @@ function inputHandler(e) {
   apiServices.currentQuery = query;
   if (query) {
     (async () => {
-      const films = await apiServices.createFindMovieGenres();
+      const fetchFindMovies = await apiServices.fetchFindMovies();
+      const fetchGenMovies = await apiServices.fetchGenreMovies();
+      const films = createMovies(fetchFindMovies, fetchGenMovies);
+
       filmsContainer.innerHTML = '';
       parseMarkup(films);
       if (films.length === 0) {
@@ -75,12 +105,18 @@ let modalFilm;
 
 export function onOpenModalCard(e) {
   if (e.target.nodeName !== 'IMG') {
-    return
+    return;
   }
   apiServices.movieId = e.target.parentNode.parentNode.id;
   (async () => {
-    const film = await apiServices.fetchDetailedMovie();
-    const markupModalCard = createModalCard(film);
+    const detailMovie = await apiServices.fetchDetailedMovie();
+    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
+
+    if (detailMovie.genres.length > 3) {
+      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
+    }
+
+    const markupModalCard = createModalCard(detailMovie);
 
     instance = basicLightbox.create(markupModalCard);
     instance.show();
