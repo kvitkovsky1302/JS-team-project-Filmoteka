@@ -1,7 +1,7 @@
 import ApiServices from './api-services.js';
 import createFilmCard from '../templates/film-card-library.hbs';
 import { onCreateTrailer } from './trailer.js';
-import onOpenModalFilmCard from './modalFilmCard.js';
+import onOpenModalFilmCard from './modal-film-card.js';
 
 const apiServices = new ApiServices();
 
