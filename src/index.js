@@ -5,3 +5,5 @@ import './js/spinner';
 import './js/theme-switcher';
 import './js/up-button';
 import './js/main-markup-maker';
+import './js/trailer';
+
