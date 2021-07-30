@@ -1,10 +1,12 @@
 import ApiServices from './api-services.js';
+import createModalCard from '../templates/modal-film-card.hbs';
 const apiServices = new ApiServices();
+import * as basicLightbox from 'basiclightbox';
 
 let instance;
 let modalFilm;
 
-export function onOpenModalFilmCard(e) {
+export default function onOpenModalFilmCard(e) {
   if (e.target.nodeName !== 'IMG') {
     return;
   }
@@ -28,7 +30,7 @@ export function onOpenModalFilmCard(e) {
   window.addEventListener('keydown', onCloseModalFilmCard);
 }
 
-export function onCloseModalFilmCard(e) {
+function onCloseModalFilmCard(e) {
   if (e.code === 'Escape') {
     instance.close();
     window.removeEventListener('keydown', onCloseModalFilmCard);
@@ -41,17 +43,27 @@ export function onCloseModalFilmCard(e) {
 const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
 const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
 function onAddFilmToLocalStorage(e) {
-  if (e.target.classList.contains('js-wached')) {
-    if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
+  if (e.target.classList.contains('js-button-watched')) {
+    if (!watchedFilmsIds.includes(e.currentTarget.id)) {
       watchedFilmsIds.push(e.currentTarget.id);
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
-    } else return;
+      window.location.reload();
+    }
+    if (queueFilmsIds.includes(e.currentTarget.id)) {
+      queueFilmsIds.splice(queueFilmsIds.indexOf(e.currentTarget.id), 1);
+      localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
+    }
   }
 
-  if (e.target.classList.contains('js-queue')) {
-    if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
+  if (e.target.classList.contains('js-button-queue')) {
+    if (!queueFilmsIds.includes(e.currentTarget.id)) {
       queueFilmsIds.push(e.currentTarget.id);
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
-    } else return;
+      window.location.reload();
+    }
+    if (watchedFilmsIds.includes(e.currentTarget.id)) {
+      watchedFilmsIds.splice(watchedFilmsIds.indexOf(e.currentTarget.id), 1);
+      localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
+    }
   }
 }

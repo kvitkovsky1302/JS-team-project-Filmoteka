@@ -1,8 +1,8 @@
 import createFilmCard from '../templates/one-film-card.hbs';
 import ApiServices from './api-services.js';
-import createModalCard from '../templates/modal-film-card.hbs';
+// import createModalCard from '../templates/modal-film-card.hbs';
 import debounce from 'lodash.debounce';
-import * as basicLightbox from 'basiclightbox';
+// import * as basicLightbox from 'basiclightbox';
 import { alert, error, info, defaults, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/PNotify.css';
@@ -15,11 +15,13 @@ defaults.delay = '4000';
 const myStack = new Stack({
   dir1: 'down',
   dir2: 'right',
-  firstpos1: 125,
+  firstpos1: 250,
   firstpos2: 10,
   push: 'bottom',
   context: document.body,
 });
+
+import onOpenModalFilmCard from './modalFilmCard';
 
 const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
@@ -98,57 +100,57 @@ function inputHandler(e) {
 
 //------------------------------------------modal parse------------------------------------------
 
-let instance;
-let modalFilm;
+// let instance;
+// let modalFilm;
 
-function onOpenModalFilmCard(e) {
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-  apiServices.movieId = e.target.parentNode.parentNode.id;
-  (async () => {
-    const detailMovie = await apiServices.fetchDetailedMovie();
-    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
+// function onOpenModalFilmCard(e) {
+//   if (e.target.nodeName !== 'IMG') {
+//     return;
+//   }
+//   apiServices.movieId = e.target.parentNode.parentNode.id;
+//   (async () => {
+//     const detailMovie = await apiServices.fetchDetailedMovie();
+//     detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
 
-    if (detailMovie.genres.length > 3) {
-      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
-    }
+//     if (detailMovie.genres.length > 3) {
+//       detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
+//     }
 
-    const markupModalCard = createModalCard(detailMovie);
+//     const markupModalCard = createModalCard(detailMovie);
 
-    instance = basicLightbox.create(markupModalCard);
-    instance.show();
-    modalFilm = document.querySelector('.modal-film');
-    modalFilm.addEventListener('click', onAddFilmToLocalStorage);
-  })();
+//     instance = basicLightbox.create(markupModalCard);
+//     instance.show();
+//     modalFilm = document.querySelector('.modal-film');
+//     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
+//   })();
 
-  window.addEventListener('keydown', onCloseModalFilmCard);
-}
+//   window.addEventListener('keydown', onCloseModalFilmCard);
+// }
 
-function onCloseModalFilmCard(e) {
-  if (e.code === 'Escape') {
-    instance.close();
-    window.removeEventListener('keydown', onCloseModalFilmCard);
-    modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
-  }
-}
+// function onCloseModalFilmCard(e) {
+//   if (e.code === 'Escape') {
+//     instance.close();
+//     window.removeEventListener('keydown', onCloseModalFilmCard);
+//     modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
+//   }
+// }
 
-//------------------------------------------local storage----------------------------------------------------
+// //------------------------------------------local storage----------------------------------------------------
 
-const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
-const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
-function onAddFilmToLocalStorage(e) {
-  if (e.target.classList.contains('js-wached')) {
-    if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
-      watchedFilmsIds.push(e.currentTarget.id);
-      localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
-    } else return;
-  }
+// const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
+// const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
+// function onAddFilmToLocalStorage(e) {
+//   if (e.target.classList.contains('js-wached')) {
+//     if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
+//       watchedFilmsIds.push(e.currentTarget.id);
+//       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
+//     } else return;
+//   }
 
-  if (e.target.classList.contains('js-queue')) {
-    if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
-      queueFilmsIds.push(e.currentTarget.id);
-      localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
-    } else return;
-  }
-}
+//   if (e.target.classList.contains('js-queue')) {
+//     if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
+//       queueFilmsIds.push(e.currentTarget.id);
+//       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
+//     } else return;
+//   }
+// }
