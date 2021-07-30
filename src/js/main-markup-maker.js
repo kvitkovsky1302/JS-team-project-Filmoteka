@@ -2,6 +2,7 @@ import createFilmCard from '../templates/one-film-card.hbs';
 import ApiServices from './api-services.js';
 // import createModalCard from '../templates/modal-film-card.hbs';
 import debounce from 'lodash.debounce';
+import { onCreateTrailer } from './trailer.js';
 // import * as basicLightbox from 'basiclightbox';
 import { alert, error, info, defaults, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/Material.css';
@@ -32,6 +33,7 @@ const apiServices = new ApiServices();
 
 function parseMarkup(films) {
   filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
+  onCreateTrailer(document.querySelectorAll('.js-btn-trailer'));
 }
 
 function createMovies(returnedFetchMovies, returnedFetchGenres) {

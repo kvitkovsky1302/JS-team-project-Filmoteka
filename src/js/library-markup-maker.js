@@ -1,5 +1,7 @@
 import ApiServices from './api-services.js';
 import createFilmCard from '../templates/film-card-library.hbs';
+import { onCreateTrailer } from './trailer.js';
+import onOpenModalFilmCard from './modalFilmCard.js';
 
 const apiServices = new ApiServices();
 
@@ -45,10 +47,9 @@ function loadFilm(id) {
 }
 function parseOneCardMarkup(films) {
   libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
+  // onCreateTrailer(document.querySelectorAll('.js-btn-trailer'));
 }
 parseWatchedFilmsMarkup();
-
-import onOpenModalFilmCard from './modalFilmCard.js';
 
 function libModalHandler(e) {
   onOpenModalFilmCard(e);
