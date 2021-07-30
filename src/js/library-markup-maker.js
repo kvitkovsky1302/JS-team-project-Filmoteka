@@ -6,6 +6,7 @@ const apiServices = new ApiServices();
 const libraryList = document.querySelector('.js-library-list');
 const btnLibWatched = document.querySelector('.js-button-library-watched');
 const btnLibQueue = document.querySelector('.js-button-library-queue');
+
 const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
 const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
 
@@ -15,25 +16,51 @@ btnLibQueue.addEventListener('click', () => parseQueueFilmsMarkup());
 function parseWatchedFilmsMarkup() {
   if (parsedWatchedFilmsIds) {
     libraryList.innerHTML = '';
-    parsedWatchedFilmsIds.forEach(loadWachedFilm);
+    btnLibWatched.classList.add('focus');
+    btnLibQueue.classList.remove('focus');
+    parsedWatchedFilmsIds.forEach(loadFilm);
   } else return;
 }
 
 function parseQueueFilmsMarkup() {
   if (parsedQueueFilmsIds) {
     libraryList.innerHTML = '';
-    parsedQueueFilmsIds.forEach(loadWachedFilm);
+    btnLibWatched.classList.remove('focus');
+    btnLibQueue.classList.add('focus');
+    parsedQueueFilmsIds.forEach(loadFilm);
   } else return;
 }
 
-function loadWachedFilm(id) {
+function loadFilm(id) {
   apiServices.movieId = id;
   (async () => {
-    const films = await apiServices.fetchDetailedMovie();
-    parseOneCardMarkup(films);
+    const detailMovie = await apiServices.fetchDetailedMovie();
+    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
+
+    if (detailMovie.genres.length > 3) {
+      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
+    }
+    parseOneCardMarkup(detailMovie);
   })();
 }
 function parseOneCardMarkup(films) {
   libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
 parseWatchedFilmsMarkup();
+
+import onOpenModalFilmCard from './modalFilmCard.js';
+
+function libModalHandler(e) {
+  onOpenModalFilmCard(e);
+
+  // if (parsedWatchedFilmsIds.includes(e.target.parentNode.parentNode.id)) {
+  //   document.querySelector('.js-button-watched').textContent = 'to queue';
+  //   document.querySelector('.js-button-queue').textContent = 'delete';
+  // }
+  // if (parsedQueueFilmsIds.includes(e.target.parentNode.parentNode.id)) {
+  //   document.querySelector('.js-button-queue').textContent = 'to watched';
+  //   document.querySelector('.js-button-watched').textContent = 'delete';
+  // }
+}
+
+libraryList.addEventListener('click', libModalHandler);

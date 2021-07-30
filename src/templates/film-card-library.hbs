@@ -1,4 +1,4 @@
-<li class='films-list__item'>
+<li class='film-items'>
     <article id={{id}} class='film-list__box'>
         <div class='film-list__box-image'>
             <img class='film-list__image' src='https://image.tmdb.org/t/p/w342{{poster_path}}'
@@ -6,10 +6,15 @@
         </div>
         <div class='film-list__box-info'>
             <h2 class='film-list__box-info-title'>{{title}}</h2>
-            <p class='film-list__box-info-main'>
-                <span class='film-list__box-info-genre'>{{#each genres}}{{this.name}}, {{/each}}/</span>
-                <span class='film-list__box-info-date'>{{release_date}}</span>
-            </p>
+            <div class='film-thumb'>
+                <ul class='film-list__box-list-genres'>
+                {{#each genres}}
+                    <li class='film-list__box-info-genre'>{{name}}</li>
+                {{/each}}
+                </ul>
+                <span class='film-list__box-info-date'>| {{year}}</span>
+                <span class='rating'>{{vote_average}}</span>
+            </div>
         </div>
     </article>
 </li>

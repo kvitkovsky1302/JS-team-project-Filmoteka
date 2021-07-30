@@ -1,8 +1,8 @@
 import createFilmCard from '../templates/one-film-card.hbs';
 import ApiServices from './api-services.js';
-import createModalCard from '../templates/modal-film-card.hbs';
+// import createModalCard from '../templates/modal-film-card.hbs';
 import debounce from 'lodash.debounce';
-import * as basicLightbox from 'basiclightbox';
+// import * as basicLightbox from 'basiclightbox';
 import { alert, error, info, defaults, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/PNotify.css';
@@ -15,30 +15,55 @@ defaults.delay = '4000';
 const myStack = new Stack({
   dir1: 'down',
   dir2: 'right',
-  firstpos1: 125,
+  firstpos1: 250,
   firstpos2: 10,
   push: 'bottom',
   context: document.body,
 });
 
-const filmsContainer = document.querySelector('.films-list');
+import onOpenModalFilmCard from './modalFilmCard';
+
+const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
-// const loadMoreBtn = document.querySelector('.header-button');
-// loadMoreBtn.addEventListener('click', onLoadMore);
-const filmsList = document.querySelector('.films-list');
-filmsList.addEventListener('click', onOpenModalCard);
+filmsList.addEventListener('click', onOpenModalFilmCard);
 searchInput.addEventListener('input', debounce(inputHandler, 500));
 
 const apiServices = new ApiServices();
 
 function parseMarkup(films) {
-  filmsContainer.insertAdjacentHTML('beforeend', createFilmCard(films));
+  filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
 }
 
-async function loadPopFilms() {
-  const films = await apiServices.fetchPopularMovies();
-  filmsContainer.innerHTML = '';
-  parseMarkup(films);
+function createMovies(returnedFetchMovies, returnedFetchGenres) {
+  return returnedFetchMovies.map(movie => {
+    movie.year = movie.release_date ? movie.release_date.split('-')[0] : 'n/a';
+    if (movie.genre_ids.length > 0 && movie.genre_ids.length <= 3) {
+      movie.genres = movie.genre_ids
+        .map(id => returnedFetchGenres.filter(el => el.id === id))
+        .flat();
+    }
+    if (movie.genre_ids.length > 3) {
+      movie.genres = movie.genre_ids
+        .map(id => returnedFetchGenres.filter(el => el.id === id))
+        .slice(0, 2)
+        .flat()
+        .concat({ name: 'Other' });
+    }
+    if (movie.genre_ids.length === 0) {
+      movie.genres = [{ name: 'n/a' }];
+    }
+    return movie;
+  });
+}
+
+function loadPopFilms() {
+  (async () => {
+    const fetchPopMovies = await apiServices.fetchPopularMovies();
+    const fetchGenMovies = await apiServices.fetchGenreMovies();
+    const films = createMovies(fetchPopMovies, fetchGenMovies);
+    filmsList.innerHTML = '';
+    parseMarkup(films);
+  })();
 }
 loadPopFilms();
 
@@ -48,14 +73,17 @@ function inputHandler(e) {
   query = e.target.value;
   apiServices.clearRes();
   if (query === '') {
-    filmsContainer.innerHTML = '';
+    filmsList.innerHTML = '';
     loadPopFilms();
   }
   apiServices.currentQuery = query;
   if (query) {
     (async () => {
-      const films = await apiServices.fetchFindMovies();
-      filmsContainer.innerHTML = '';
+      const fetchFindMovies = await apiServices.fetchFindMovies();
+      const fetchGenMovies = await apiServices.fetchGenreMovies();
+      const films = createMovies(fetchFindMovies, fetchGenMovies);
+
+      filmsList.innerHTML = '';
       parseMarkup(films);
       if (films.length === 0) {
         error({
@@ -72,51 +100,57 @@ function inputHandler(e) {
 
 //------------------------------------------modal parse------------------------------------------
 
-let instance;
-let modalFilm;
+// let instance;
+// let modalFilm;
 
-export function onOpenModalCard(e) {
-  if (e.target.nodeName !== 'IMG') {
-    return
-  }
-  apiServices.movieId = e.target.parentNode.parentNode.id;
-  (async () => {
-    const film = await apiServices.fetchDetailedMovie();
-    const markupModalCard = createModalCard(film);
+// function onOpenModalFilmCard(e) {
+//   if (e.target.nodeName !== 'IMG') {
+//     return;
+//   }
+//   apiServices.movieId = e.target.parentNode.parentNode.id;
+//   (async () => {
+//     const detailMovie = await apiServices.fetchDetailedMovie();
+//     detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
 
-    instance = basicLightbox.create(markupModalCard);
-    instance.show();
-    modalFilm = document.querySelector('.modal-film');
-    modalFilm.addEventListener('click', onAddFilmToLocalStorage);
-  })();
+//     if (detailMovie.genres.length > 3) {
+//       detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
+//     }
 
-  window.addEventListener('keydown', onCloseModal);
-}
+//     const markupModalCard = createModalCard(detailMovie);
 
-function onCloseModal(e) {
-  if (e.code === 'Escape') {
-    instance.close();
-    window.removeEventListener('keydown', onCloseModal);
-    modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
-  }
-}
+//     instance = basicLightbox.create(markupModalCard);
+//     instance.show();
+//     modalFilm = document.querySelector('.modal-film');
+//     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
+//   })();
 
-//------------------------------------------local storage----------------------------------------------------
+//   window.addEventListener('keydown', onCloseModalFilmCard);
+// }
 
-const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
-const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
-function onAddFilmToLocalStorage(e) {
-  if (e.target.classList.contains('js-wached')) {
-    if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
-      watchedFilmsIds.push(e.currentTarget.id);
-      localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
-    } else return;
-  }
+// function onCloseModalFilmCard(e) {
+//   if (e.code === 'Escape') {
+//     instance.close();
+//     window.removeEventListener('keydown', onCloseModalFilmCard);
+//     modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
+//   }
+// }
 
-  if (e.target.classList.contains('js-queue')) {
-    if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
-      queueFilmsIds.push(e.currentTarget.id);
-      localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
-    } else return;
-  }
-}
+// //------------------------------------------local storage----------------------------------------------------
+
+// const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
+// const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
+// function onAddFilmToLocalStorage(e) {
+//   if (e.target.classList.contains('js-wached')) {
+//     if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
+//       watchedFilmsIds.push(e.currentTarget.id);
+//       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
+//     } else return;
+//   }
+
+//   if (e.target.classList.contains('js-queue')) {
+//     if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
+//       queueFilmsIds.push(e.currentTarget.id);
+//       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
+//     } else return;
+//   }
+// }
