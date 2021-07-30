@@ -148,10 +148,6 @@
     width: 800px;
   }
 
-  .students-item {
-    flex-basis: calc(100% / 4 - 10px);
-  }
-
   .students-photo {
     width: 120px;
     height: 120px;
@@ -159,12 +155,12 @@
 
   .students-name,
   .students-role {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .students-linkedin,
   .students-github {
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
   }
 }

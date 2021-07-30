@@ -1,5 +1,9 @@
 <div class="modal-film" id={{id}}>
 
+    <button type="button" class="modal-close-btn" data-modal-close>
+        <span class="close"></span>
+    </button>
+
     <!-- постер фільму (картинка) модалка -->
     <div class="modal-film__img-cont">
          {{#if poster_path}}
@@ -64,12 +68,6 @@
         <button type="button" class="button-modal js-button-queue">add to queue</button>
         </div>
 
-    </div>
-
-    <button type="button" class="modal-close-btn" data-modal-close>
-        <svg class="modal-icon-close">
-            <use href="../src/img/sprite.svg#close"></use>
-        </svg>
-    </button>
+    </div>   
 
 </div>
