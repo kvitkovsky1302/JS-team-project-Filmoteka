@@ -1,5 +1,33 @@
-.btn-trailer{
-    position: absolute;
-    top: 5px;
-    left: 5px;
+.btn-trailer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  width: 66px;
+  height: 46px;
+
+  border: none;
+
+  background-size: cover;
+  background-image: url(../img/play-button.png);
+
+  background-color: inherit;
+
+  animation: blinker 2s infinite;
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.btn-info {
+  display: none;
+  &:hover {
+    display: block;
+  }
 }
