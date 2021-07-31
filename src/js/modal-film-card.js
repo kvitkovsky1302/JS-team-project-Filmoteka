@@ -25,13 +25,14 @@ export default function onOpenModalFilmCard(e) {
     instance.show();
     modalFilm = document.querySelector('.modal-film');
     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
+    document.querySelector('.js-modal-close-btn').addEventListener('click', onCloseModalFilmCard);
   })();
 
   window.addEventListener('keydown', onCloseModalFilmCard);
 }
 
 function onCloseModalFilmCard(e) {
-  if (e.code === 'Escape') {
+  if (e.code === 'Escape' || e.currentTarget.classList.contains('js-modal-close-btn')) {
     instance.close();
     window.removeEventListener('keydown', onCloseModalFilmCard);
     modalFilm.removeEventListener('click', onAddFilmToLocalStorage);

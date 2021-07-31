@@ -10,16 +10,30 @@ import '@pnotify/core/dist/PNotify.css';
 import 'material-design-icons/iconfont/material-icons.css';
 defaults.styling = 'material';
 defaults.icons = 'material';
-defaults.width = '500px';
+defaults.width = '100%';
 defaults.delay = '4000';
 
-const myStack = new Stack({
-  dir1: 'down',
-  dir2: 'right',
+const errQuery = new Stack({
+  dir1: 'up',
   firstpos1: 250,
-  firstpos2: 10,
   push: 'bottom',
-  context: document.body,
+  modal: true,
+  maxOpen: Infinity,
+});
+
+const noMoreMovies = new Stack({
+  dir1: 'up',
+  firstpos1: 0,
+  spacing1: 0,
+});
+
+const foundAllMovies = new Stack({
+  modal: false,
+  dir1: 'down',
+  firstpos1: 0,
+  spacing1: 0,
+  push: 'top',
+  maxOpen: Infinity,
 });
 
 import onOpenModalFilmCard from './modal-film-card';
@@ -90,7 +104,17 @@ function inputHandler(e) {
       if (films.length === 0) {
         error({
           text: 'Search result not successful. Enter the correct movie name!',
-          stack: myStack,
+          stack: errQuery,
+        });
+      }
+      if (films.length === 20) {
+        loadMoreBtn.style.display = 'block';
+      }
+      if (films.length < 20 && films.length !== 0) {
+        loadMoreBtn.style.display = 'none';
+        alert({
+          text: 'Found all movies for the current query!',
+          stack: foundAllMovies,
         });
       }
     })();
@@ -114,8 +138,8 @@ function onLoadMore() {
       if (films.length < 20) {
         loadMoreBtn.style.display = 'none';
         alert({
-          text: 'No more photos were found for this request!',
-          stack: myStack,
+          text: 'No more movies found for the current query!',
+          stack: noMoreMovies,
         });
       }
     })();
@@ -133,16 +157,9 @@ function onLoadMore() {
         behavior: 'smooth',
         block: 'end',
       });
-      if (films.length < 20) {
-        loadMoreBtn.style.display = 'none';
-        alert({
-          text: 'No more photos were found for this request!',
-          stack: myStack,
-        });
-      }
     })();
   }
 }
 
-const loadMoreBtn = document.querySelector('.js-btn-load-more');
+const loadMoreBtn = document.querySelector('.js-load-more-btn');
 loadMoreBtn.addEventListener('click', onLoadMore);
