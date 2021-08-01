@@ -16,7 +16,7 @@ btnLibWatched.addEventListener('click', () => parseWatchedFilmsMarkup());
 btnLibQueue.addEventListener('click', () => parseQueueFilmsMarkup());
 
 function parseWatchedFilmsMarkup() {
-  // window.location.reload();
+  
   if (parsedWatchedFilmsIds) {
     libraryList.innerHTML = '';
     btnLibWatched.classList.add('focus');
@@ -26,7 +26,7 @@ function parseWatchedFilmsMarkup() {
 }
 
 function parseQueueFilmsMarkup() {
- //  window.location.reload();
+ 
   if (parsedQueueFilmsIds) {
     libraryList.innerHTML = '';
     btnLibWatched.classList.remove('focus');
