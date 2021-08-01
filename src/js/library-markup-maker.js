@@ -1,7 +1,7 @@
 import ApiServices from './api-services.js';
 import createFilmCard from '../templates/film-card-library.hbs';
 import { onCreateTrailer } from './trailer.js';
-import onOpenModalFilmCard from './modalFilmCard.js';
+import onOpenModalFilmCard from './modal-film-card.js';
 
 const apiServices = new ApiServices();
 
@@ -53,15 +53,6 @@ parseWatchedFilmsMarkup();
 
 function libModalHandler(e) {
   onOpenModalFilmCard(e);
-
-  // if (parsedWatchedFilmsIds.includes(e.target.parentNode.parentNode.id)) {
-  //   document.querySelector('.js-button-watched').textContent = 'to queue';
-  //   document.querySelector('.js-button-queue').textContent = 'delete';
-  // }
-  // if (parsedQueueFilmsIds.includes(e.target.parentNode.parentNode.id)) {
-  //   document.querySelector('.js-button-queue').textContent = 'to watched';
-  //   document.querySelector('.js-button-watched').textContent = 'delete';
-  // }
 }
 
 libraryList.addEventListener('click', libModalHandler);

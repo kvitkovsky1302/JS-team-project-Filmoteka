@@ -10,19 +10,33 @@ import '@pnotify/core/dist/PNotify.css';
 import 'material-design-icons/iconfont/material-icons.css';
 defaults.styling = 'material';
 defaults.icons = 'material';
-defaults.width = '500px';
+defaults.width = '100%';
 defaults.delay = '4000';
 
-const myStack = new Stack({
-  dir1: 'down',
-  dir2: 'right',
+const errQuery = new Stack({
+  dir1: 'up',
   firstpos1: 250,
-  firstpos2: 10,
   push: 'bottom',
-  context: document.body,
+  modal: true,
+  maxOpen: Infinity,
 });
 
-import onOpenModalFilmCard from './modalFilmCard';
+const noMoreMovies = new Stack({
+  dir1: 'up',
+  firstpos1: 0,
+  spacing1: 0,
+});
+
+const foundAllMovies = new Stack({
+  modal: false,
+  dir1: 'down',
+  firstpos1: 0,
+  spacing1: 0,
+  push: 'top',
+  maxOpen: Infinity,
+});
+
+import onOpenModalFilmCard from './modal-film-card';
 
 const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
@@ -84,13 +98,23 @@ function inputHandler(e) {
       const fetchFindMovies = await apiServices.fetchFindMovies();
       const fetchGenMovies = await apiServices.fetchGenreMovies();
       const films = createMovies(fetchFindMovies, fetchGenMovies);
-
+      console.log(films);
       filmsList.innerHTML = '';
       parseMarkup(films);
       if (films.length === 0) {
         error({
           text: 'Search result not successful. Enter the correct movie name!',
-          stack: myStack,
+          stack: errQuery,
+        });
+      }
+      if (films.length === 20) {
+        loadMoreBtn.style.display = 'block';
+      }
+      if (films.length < 20 && films.length !== 0) {
+        loadMoreBtn.style.display = 'none';
+        alert({
+          text: 'Found all movies for the current query!',
+          stack: foundAllMovies,
         });
       }
     })();
@@ -98,61 +122,44 @@ function inputHandler(e) {
 }
 //-------------------------------------------load more-------------------------------------------
 
-//-----------------------------------------------------------------------------------------------
+function onLoadMore() {
+  if (query) {
+    (async () => {
+      const fetchFindMovies = await apiServices.fetchFindMovies();
+      const fetchGenMovies = await apiServices.fetchGenreMovies();
+      const films = createMovies(fetchFindMovies, fetchGenMovies);
+      parseMarkup(films);
+      const id = await films[films.length - 1].id;
+      const element = document.getElementById(`${id}`);
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+      });
+      if (films.length < 20) {
+        loadMoreBtn.style.display = 'none';
+        alert({
+          text: 'No more movies found for the current query!',
+          stack: noMoreMovies,
+        });
+      }
+    })();
+  }
 
-//------------------------------------------modal parse------------------------------------------
+  if (!query) {
+    (async () => {
+      const fetchPopMovies = await apiServices.fetchPopularMovies();
+      const fetchGenMovies = await apiServices.fetchGenreMovies();
+      const films = createMovies(fetchPopMovies, fetchGenMovies);
+      parseMarkup(films);
+      const id = await films[films.length - 1].id;
+      const element = document.getElementById(`${id}`);
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+      });
+    })();
+  }
+}
 
-// let instance;
-// let modalFilm;
-
-// function onOpenModalFilmCard(e) {
-//   if (e.target.nodeName !== 'IMG') {
-//     return;
-//   }
-//   apiServices.movieId = e.target.parentNode.parentNode.id;
-//   (async () => {
-//     const detailMovie = await apiServices.fetchDetailedMovie();
-//     detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
-
-//     if (detailMovie.genres.length > 3) {
-//       detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
-//     }
-
-//     const markupModalCard = createModalCard(detailMovie);
-
-//     instance = basicLightbox.create(markupModalCard);
-//     instance.show();
-//     modalFilm = document.querySelector('.modal-film');
-//     modalFilm.addEventListener('click', onAddFilmToLocalStorage);
-//   })();
-
-//   window.addEventListener('keydown', onCloseModalFilmCard);
-// }
-
-// function onCloseModalFilmCard(e) {
-//   if (e.code === 'Escape') {
-//     instance.close();
-//     window.removeEventListener('keydown', onCloseModalFilmCard);
-//     modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
-//   }
-// }
-
-// //------------------------------------------local storage----------------------------------------------------
-
-// const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
-// const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
-// function onAddFilmToLocalStorage(e) {
-//   if (e.target.classList.contains('js-wached')) {
-//     if (watchedFilmsIds !== null && !watchedFilmsIds.includes(e.currentTarget.id)) {
-//       watchedFilmsIds.push(e.currentTarget.id);
-//       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
-//     } else return;
-//   }
-
-//   if (e.target.classList.contains('js-queue')) {
-//     if (queueFilmsIds !== null && !queueFilmsIds.includes(e.currentTarget.id)) {
-//       queueFilmsIds.push(e.currentTarget.id);
-//       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
-//     } else return;
-//   }
-// }
+const loadMoreBtn = document.querySelector('.js-load-more-btn');
+loadMoreBtn.addEventListener('click', onLoadMore);
