@@ -103,7 +103,7 @@ function inputHandler(e) {
       const fetchFindMovies = await apiServices.fetchFindMovies();
       const fetchGenMovies = await apiServices.fetchGenreMovies();
       const films = createMovies(fetchFindMovies, fetchGenMovies);
-      console.log(films);
+     // console.log(films);
       filmsList.innerHTML = '';
       parseMarkup(films);
       if (films.length === 0) {
