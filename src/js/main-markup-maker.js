@@ -26,8 +26,10 @@ import onOpenModalFilmCard from './modalFilmCard';
 
 const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
+const headerForm = document.querySelector('.header-form');
 filmsList.addEventListener('click', onOpenModalFilmCard);
 searchInput.addEventListener('input', debounce(inputHandler, 500));
+headerForm.addEventListener('keydown', headerFormIgnoreKeypressEnter);
 
 const apiServices = new ApiServices();
 
@@ -72,7 +74,8 @@ loadPopFilms();
 let query;
 
 function inputHandler(e) {
-  query = e.target.value;
+ 
+  query = e.target.value.trim();
   apiServices.clearRes();
   if (query === '') {
     filmsList.innerHTML = '';
@@ -94,6 +97,15 @@ function inputHandler(e) {
         });
       }
     })();
+  }
+}
+
+
+function headerFormIgnoreKeypressEnter(e) {
+ 
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    return;
   }
 }
 //-------------------------------------------load more-------------------------------------------
