@@ -14,6 +14,12 @@
   cursor: pointer;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px $accentColor;
+
+
+  &:hover .film-list__image {
+  transform: scale(1.07);
+  transition: transform 0.6s ease-in-out;
+}
 }
 
 .film-list__box-image {
@@ -32,11 +38,6 @@
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
 
-  transition: transform 0.6s ease-in-out;
-  }
-
-  .film-list__image:hover {
-  transform: scale(1.07);
   transition: transform 0.6s ease-in-out;
   }
 
