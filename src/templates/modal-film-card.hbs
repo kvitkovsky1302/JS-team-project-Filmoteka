@@ -25,7 +25,7 @@
     <div class="modal-film__text-cont">
         <h2 class="modal-film__text-cont__name">{{title}}</h2>
 
-            <table class="modal-films__tb">
+        <table class="modal-films__tb">
                 <tr class="modal-film__tr">
                     <td class="modal-film__td-left">Vote / Votes</td>
                     <td class="modal-film__td-right">
@@ -54,20 +54,22 @@
                             {{/each}}</span>
                     </td>
                 </tr>
-            </table>
-      
+        </table>
         <div class="modal-film__text-cont__cont">
-            <p class="modal-film__text-cont__about">About</p>
-            <p class="modal-film__text-cont__about-description">
-                {{overview}}
-            </p> 
+                <p class="modal-film__text-cont__about">About</p>
+                <p class="modal-film__text-cont__about-description">
+                    {{overview}}
+                </p> 
         </div>
         <!-- Кнопки модалки -->
-
-        <button type="button" class="button-modal js-button-watched">add to watched</button>
-        <button type="button" class="button-modal js-button-queue">add to queue</button>
-        </div>
-
-    </div>   
-
+        <div class="button-modal-wrapper">
+                <button type="button" class="button-modal js-button-watched">
+                    add to watched
+                </button>
+                <button type="button" class="button-modal js-button-queue">
+                    add to queue
+                </button>
+        </div>        
+        
+    </div>  
 </div>
