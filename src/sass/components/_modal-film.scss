@@ -128,10 +128,16 @@
   padding-bottom: 21px;
 }
 
+.button-modal-wrapper {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
 .button-modal {
-  all: unset;
+  // all: unset;
   width: 110px;
-  height: 44px;
+  min-height: 44px;
   background-color: white;
   border: 1px solid black;
   text-transform: uppercase;
@@ -144,15 +150,15 @@
   text-align: center;
   cursor: pointer;
 
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
   &:hover {
     background-color: #ff6b08;
     border: 1px solid #ff6b08;
     color: #fff;
   }
-}
-
-.button-watched {
-  margin-right: 10px;
 }
 
 .modal-close-btn {

@@ -27,6 +27,7 @@ const noMoreMovies = new Stack({
   spacing1: 0,
 });
 
+
 const foundAllMovies = new Stack({
   modal: false,
   dir1: 'down',
@@ -35,6 +36,7 @@ const foundAllMovies = new Stack({
   push: 'top',
   maxOpen: Infinity,
 });
+
 
 import onOpenModalFilmCard from './modal-film-card';
 
