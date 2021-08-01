@@ -3,6 +3,7 @@ import createModalCard from '../templates/modal-film-card.hbs';
 const apiServices = new ApiServices();
 import * as basicLightbox from 'basiclightbox';
 
+
 const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
 const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
 
@@ -43,20 +44,22 @@ export default function onOpenModalFilmCard(e) {
     }
     
     modalFilm.addEventListener('click', addOrRemoveMovieFromLocalStorage);
+
   })();
 
   window.addEventListener('keydown', onCloseModalFilmCard);
 }
 
 function onCloseModalFilmCard(e) {
-  if (e.code === 'Escape') {
+  if (e.code === 'Escape' || e.currentTarget.classList.contains('js-modal-close-btn')) {
     instance.close();
     window.removeEventListener('keydown', onCloseModalFilmCard);
-    modalFilm.removeEventListener('click', addOrRemoveMovieFromLocalStorage);
+    modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
   }
 }
 
 //------------------------------------------local storage----------------------------------------------------
+
 
 function addOrRemoveMovieFromLocalStorage(e) {
 
