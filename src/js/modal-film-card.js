@@ -32,6 +32,7 @@ export default function onOpenModalFilmCard(e) {
     instance.show();
     
     modalFilm = document.querySelector('.modal-film');
+    document.querySelector('.js-modal-close-btn').addEventListener('click', onCloseModalFilmCard);
     btnAddToWatched = document.querySelector('.js-button-watched');
     btnAddToQueue = document.querySelector('.js-button-queue');
 
