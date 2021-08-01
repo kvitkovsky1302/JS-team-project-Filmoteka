@@ -22,7 +22,7 @@ const myStack = new Stack({
   context: document.body,
 });
 
-import onOpenModalFilmCard from './modalFilmCard';
+import onOpenModalFilmCard from './modal-film-card';
 
 const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
