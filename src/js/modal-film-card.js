@@ -70,12 +70,12 @@ function addOrRemoveMovieFromLocalStorage(e) {
       watchedFilmsIds.push(e.currentTarget.id);
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
       e.target.textContent = "remove from watched";
-      window.location.reload();
+      // window.location.reload();
     } else {
       watchedFilmsIds.splice(watchedFilmsIds.indexOf(e.currentTarget.id), 1);
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
       e.target.textContent = "add to watched";
-      window.location.reload();
+      // window.location.reload();
     }    
   }
 
@@ -85,12 +85,12 @@ function addOrRemoveMovieFromLocalStorage(e) {
       queueFilmsIds.push(e.currentTarget.id);
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
       e.target.textContent = "remove from queue";
-      window.location.reload();
+      // window.location.reload();
     } else {
       queueFilmsIds.splice(queueFilmsIds.indexOf(e.currentTarget.id), 1);
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
       e.target.textContent = "add to queue";
-      window.location.reload();
+      // window.location.reload();
     }
   }
 }
