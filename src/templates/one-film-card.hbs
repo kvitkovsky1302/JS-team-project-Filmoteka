@@ -1,0 +1,36 @@
+{{#each this}}
+  <li class='film-items'>
+    <article id={{id}} class='film-list__box'>
+      <div class='film-list__box-image'>
+        {{#if poster_path}}
+        <img
+          class='film-list__image'
+          src='https://image.tmdb.org/t/p/w342{{poster_path}}'
+          alt='{{title}} movie poster'
+        />
+        {{else}}
+          <img
+          class='film-list__image'
+          src='https://i.ibb.co/8mnHvb2/no-poster.jpg'
+          alt='no_poster'
+        />
+        {{/if}}
+      </div>
+      <div class='film-list__box-info'>
+        <h2 class='film-list__box-info-title'>{{title}}</h2>
+        <div class='film-thumb'>
+            <ul class='film-list__box-list-genres'>
+            {{#each genres}}
+              <li class='film-list__box-info-genre'>{{name}}</li>
+            {{/each}}
+            </ul>
+            <span class='film-list__box-info-date'>| {{year}}</span>
+            <span class='rating'>{{vote_average}}</span>
+        </div>
+      </div>
+      <button class="btn-trailer js-btn-trailer" data-id="{{id}}">
+        {{!-- <span class="btn-info">Watch trailer</span>  --}}
+       </button>
+    </article>
+  </li>
+{{/each}}

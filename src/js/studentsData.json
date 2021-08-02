@@ -1,0 +1,44 @@
+[
+    {
+        "id":"1",
+        "name":"Yurii Yurents",
+        "role": "Team Lead",
+        "urlLinkedin":"https://www.linkedin.com/in/yuriiyurents/",
+        "urlGithub":"https://github.com/MasterWork1995"
+    },
+    {
+        "id":"2",
+        "name":"Bogdan Lishchuk",
+        "role": "Scrum Master",
+        "urlLinkedin":"https://www.linkedin.com/in/ksoer/",
+        "urlGithub":"https://github.com/ksoer"
+    },
+    {
+        "id":"3",
+        "name":"Maxim Kvitkovsky",
+        "role": "Developer",
+        "urlLinkedin":"https://www.linkedin.com/in/kvitkovskymaxim/",
+        "urlGithub":"https://github.com/kvitkovsky1302"
+    },
+    {
+        "id":"4",
+        "name":"Vladislav Kulachko",
+        "role": "Developer",
+        "urlLinkedin":"www.linkedin.com/in/vladislavkulachko",
+        "urlGithub":"https://github.com/vladislav-kulachko"
+    },
+    {
+        "id":"5",
+        "name":"Olena Olefirenko",
+        "role": "Developer",
+        "urlLinkedin":"https://github.com/OlenaOlefirenko",
+        "urlGithub":"https://github.com/OlenaOlefirenko"
+    },
+    {
+        "id":"6",
+        "name":"Kateryna Tymoshchuk",
+        "role": "Developer",
+        "urlPhoto":"https://picsum.photos/300/300",
+        "urlLinkedin":"https://github.com/TKatVol",
+        "urlGithub":"https://github.com/TKatVol"
+    }]

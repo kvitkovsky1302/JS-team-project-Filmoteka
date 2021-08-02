@@ -1,0 +1,73 @@
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+body.light-theme {
+  color: $backgroundColorDark;
+  background-color: $backgroundColorLight;
+}
+
+body.dark-theme {
+  background-color: $backgroundColorDark;
+  color: $textLightColor;
+}
+
+.footer.light-theme {
+  background-color: $backgroundColorFooter;
+  color: $textColorFooter;
+}
+
+.footer.dark-theme {
+  background-color: $backgroundColorFooterDark;
+  color: $textLightColor;
+}
+
+.checkbox-theme-switcher {
+  opacity: 0;
+  position: absolute;
+}
+
+.icon-moon {
+  fill: #ffa716;
+  height: 24px;
+  width: 24px;
+}
+
+.icon-sun {
+  fill: #ffa716;
+  height: 24px;
+  width: 24px;
+}
+
+.label-theme-switcher {
+  padding: 2px;
+  height: 26px;
+  width: 60px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+  background-color: $backgroundColorLight;
+}
+
+.ball-switcher {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  background-color: $accentColor;
+
+  transition: transform 0.2s linear;
+}
+.checkbox-theme-switcher:checked + .label-theme-switcher {
+  background-color: $backgroundColorDark;
+}
+
+.checkbox-theme-switcher:checked + .label-theme-switcher .ball-switcher {
+  transform: translateX(32px);
+}
