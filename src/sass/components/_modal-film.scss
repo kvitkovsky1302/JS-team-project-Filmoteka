@@ -38,10 +38,9 @@
 
 .modal-film__img {
   display: block;
-  width: 280px;
   height: 357px;
-  background-color: black;
   margin: auto;
+  object-fit: contain;
 }
 
 .modal-film__text-cont {
@@ -276,5 +275,7 @@
   }
   .modal-film__text-cont {
     width: 423px;
+    margin-left: 0px;
+    margin-right: 40px;
   }
 }

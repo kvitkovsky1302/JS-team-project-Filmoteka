@@ -1,6 +1,19 @@
 a {
   text-decoration: none;
-}
+  width: 30px;
+  height: 30px;
+
+  @media screen and (min-width: 768px) {
+  width: 200px;
+  height: 25px;
+  }
+
+  @media screen and (min-width: 1024px) {
+  width: 240px;
+  height: 30px;
+  }
+  }
+
 .header-container {
   background-repeat: no-repeat;
   background-position: center;
@@ -39,12 +52,12 @@ a {
 
 .page-header {
   height: 230px;
- 
-}
+ }
 
 .nav-header {
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .icon-film {
@@ -52,13 +65,16 @@ a {
   margin-right: 10px;
 }
 
-.logo-header {
-  display: none;
-  margin-top: 41px;
-  width: 141px;
-  height: 35px;
-  text-align: center;
-  align-items: center;
+.logo-link{
+  background-image: url('../img/header/logot-mob.png');
+  
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @media screen and (min-width: 768px) {
+  background-image: url('../img/header/logot.png');
+  }
 }
 
 @media screen and (min-width: 768px) {
