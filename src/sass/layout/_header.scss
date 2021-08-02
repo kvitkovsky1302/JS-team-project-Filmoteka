@@ -1,5 +1,8 @@
 a {
+  
   text-decoration: none;
+  width: 240px;
+  height: 50px;
 }
 .header-container {
   background-repeat: no-repeat;
@@ -39,12 +42,12 @@ a {
 
 .page-header {
   height: 230px;
- 
-}
+ }
 
 .nav-header {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
 }
 
 .icon-film {
@@ -52,13 +55,12 @@ a {
   margin-right: 10px;
 }
 
-.logo-header {
-  display: none;
-  margin-top: 41px;
-  width: 141px;
-  height: 35px;
-  text-align: center;
-  align-items: center;
+.logo-link{
+  background-image: url('../img/header/logot.png');
+  
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 @media screen and (min-width: 768px) {
