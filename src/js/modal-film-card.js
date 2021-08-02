@@ -55,7 +55,7 @@ function onCloseModalFilmCard(e) {
   if (e.code === 'Escape' || e.currentTarget.classList.contains('js-modal-close-btn')) {
     instance.close();
     window.removeEventListener('keydown', onCloseModalFilmCard);
-    modalFilm.removeEventListener('click', onAddFilmToLocalStorage);
+    modalFilm.removeEventListener('click', addOrRemoveMovieFromLocalStorage);
   }
 }
 

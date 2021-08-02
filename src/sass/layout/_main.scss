@@ -2,6 +2,34 @@
   flex: 1 0 auto;
 }
 
+.load-more-btn {
+  display: block;
+  width: 110px;
+  min-height: 44px;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: $accentColor;
+  border: 1px solid $backgroundColorLight;
+  text-transform: uppercase;
+  font-family: Roboto;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  color: $textLightColor;
+
+  &:hover,
+  &:focus {
+    background-color: $backgroundColorLight;
+    border: 1px solid $accentColor;
+    color: $accentColor;
+  }
+}
+
 // .films-container {
 //   padding: 60px 71px 60px 71px;
 // }
