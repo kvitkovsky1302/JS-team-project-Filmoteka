@@ -3,7 +3,7 @@ import ApiServices from './api-services.js';
 // import createModalCard from '../templates/modal-film-card.hbs';
 import debounce from 'lodash.debounce';
 import { onCreateTrailer } from './trailer.js';
-// import * as basicLightbox from 'basiclightbox';
+import { spinner } from './spinner.js';
 import { alert, error, info, defaults, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/PNotify.css';
@@ -50,11 +50,13 @@ headerForm.addEventListener('keydown', headerFormIgnoreKeypressEnter);
 const apiServices = new ApiServices();
 
 function parseMarkup(films) {
+  spinner.close();
   filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
   onCreateTrailer(document.querySelectorAll('.js-btn-trailer'));
 }
 
 function createMovies(returnedFetchMovies, returnedFetchGenres) {
+  spinner.show();
   return returnedFetchMovies.map(movie => {
     movie.year = movie.release_date ? movie.release_date.split('-')[0] : 'n/a';
     if (movie.genre_ids.length > 0 && movie.genre_ids.length <= 3) {

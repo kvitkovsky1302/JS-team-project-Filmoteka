@@ -12,7 +12,7 @@ const markup = `<div class="sk-chase">
 
 const spinner = basicLightbox.create(markup);
 
-export default { spinner };
+export { spinner };
 
 // ПОКАЗАТИ спінер - spinner.show();
 // ЗАКРИТИ  спінер - spinner.close();

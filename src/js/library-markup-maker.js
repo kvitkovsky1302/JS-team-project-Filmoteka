@@ -2,6 +2,7 @@ import ApiServices from './api-services.js';
 import createFilmCard from '../templates/film-card-library.hbs';
 import { onCreateTrailer } from './trailer.js';
 import onOpenModalFilmCard from './modal-film-card.js';
+import { spinner } from './spinner.js';
 
 const apiServices = new ApiServices();
 
@@ -38,6 +39,7 @@ function parseQueueFilmsMarkup() {
 function loadFilm(id) {
   apiServices.movieId = id;
   (async () => {
+    spinner.show();
     const detailMovie = await apiServices.fetchDetailedMovie();
     detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
 
@@ -48,6 +50,7 @@ function loadFilm(id) {
   })();
 }
 function parseOneCardMarkup(films) {
+  spinner.close();
   libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
   // onCreateTrailer(document.querySelectorAll('.js-btn-trailer'));
 }
