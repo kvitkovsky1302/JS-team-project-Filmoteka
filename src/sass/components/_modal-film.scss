@@ -30,24 +30,22 @@
 .modal-film__img-cont {
   margin: auto;
   margin-top: 48px;
-  width: 240px;
-  height: 357px;
+  height: 100%;
   // overflow: hidden;
   border-radius: 4px;
 }
 
 .modal-film__img {
   display: block;
-  width: 280px;
   height: 357px;
-  background-color: black;
   margin: auto;
+  object-fit: contain;
 }
 
 .modal-film__text-cont {
   margin-top: 40px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 0px;
+  margin-right: 40px;
   margin-bottom: 40px;
 
   &__name {
