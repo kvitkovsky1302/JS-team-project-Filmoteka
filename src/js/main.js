@@ -30,7 +30,7 @@ function parseMarkup(films) {
 function searchMovies(event) {
 
   event.preventDefault();
-  // const search = event.target.value.trim()
+  
   const search = event.currentTarget.elements.query.value.trim()
 
   apiServices.currentQuery = search;
@@ -58,7 +58,7 @@ async function fetchSearchMovies() {
     showNotice('error');
     clearMoviesList();
     return;
-  } else if (totalResults < 20) {
+  } else  {
     showNotice('info');
     showOrHideBtn(newResults);
   }
