@@ -30,8 +30,8 @@ function parseMarkup(films) {
 function searchMovies(event) {
 
   event.preventDefault();
-  const search = event.target.value.trim()
-//   const search = event.currentTarget.elements.query.value.trim()
+  // const search = event.target.value.trim()
+  const search = event.currentTarget.elements.query.value.trim()
 
   apiServices.currentQuery = search;
 
