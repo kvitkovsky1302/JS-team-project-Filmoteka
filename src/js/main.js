@@ -1,25 +1,26 @@
 import refs from './refs.js';
 import createFilmCard from '../templates/one-film-card.hbs';
 import ApiServices from './api-services.js';
-import debounce from 'lodash.debounce';
 import onOpenModalFilmCard from './modal-film-card';
 import { onCreateTrailer } from './trailer.js';
 import { showStackTopLeft as showNotice } from './error-message.js';
 
-function onLoadHomePage() {
+const apiServices = new ApiServices();
+
+loadPopularMovies();
+
+function onLoadHomePage () {
   refs.headerForm.classList.remove('visually-hidden');
   refs.headerButtons.classList.add('visually-hidden');
 
   refs.homeLink.classList.add('current-link');
   refs.libraryLink.classList.remove('current-link');
 
-  refs.filmsList.innerHTML = '';
+  refs.headerForm.reset();
+  clearMoviesList();
+  apiServices.resetPage();
   loadPopularMovies();
 }
-
-const apiServices = new ApiServices();
-
-loadPopularMovies();
 
 function parseMarkup(films) {
   refs.filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
@@ -27,7 +28,10 @@ function parseMarkup(films) {
 }
 
 function searchMovies(event) {
-  const search = event.target.value.trim();
+
+  event.preventDefault();
+  const search = event.target.value.trim()
+//   const search = event.currentTarget.elements.query.value.trim()
 
   apiServices.currentQuery = search;
 
@@ -59,9 +63,6 @@ async function fetchSearchMovies() {
     showOrHideBtn(newResults);
   }
 
-  // console.log(totalResults);
-  // console.log(newResults);
-
   const movies = createMovies(results, fetchGenres);
   parseMarkup(movies);
 }
@@ -72,15 +73,13 @@ async function loadPopularMovies() {
   const { results, totalResults, newResults } = fetchPopMovies;
 
   if (totalResults === 0) {
+    showNotice('error');
     clearMoviesList();
     return;
   } else {
     showOrHideBtn(newResults);
   }
-
-  // console.log(totalResults);
-  // console.log(newResults);
-
+  
   const movies = createMovies(results, fetchGenres);
   parseMarkup(movies);
 }
@@ -120,28 +119,28 @@ function clearMoviesList() {
   refs.filmsList.innerHTML = '';
 }
 
-function headerFormIgnoreKeypressEnter(e) {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    return;
-  }
-}
-
 //--------------------------------load more-------------------------------------------
 
 function loadMoreMovies() {
   if (refs.searchInput.value.trim() === '') {
     loadPopularMovies();
+    setTimeout(scrollToBottom, 1000);
   } else {
     fetchSearchMovies();
+    setTimeout(scrollToBottom, 1000);
   }
+}
+
+function scrollToBottom() {
+    refs.moviesContainer.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end',
+    });
 }
 
 refs.homeLink.addEventListener('click', onLoadHomePage);
 refs.logoLink.addEventListener('click', onLoadHomePage);
 
 refs.filmsList.addEventListener('click', onOpenModalFilmCard);
-refs.searchInput.addEventListener('input', debounce(searchMovies, 1000));
-refs.headerForm.addEventListener('keydown', headerFormIgnoreKeypressEnter);
-
-refs.loadMoreBtn.addEventListener('click', loadMoreMovies);
+refs.headerForm.addEventListener('submit', searchMovies);
+refs.loadMoreBtn.addEventListener('click',loadMoreMovies);
