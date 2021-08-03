@@ -4,6 +4,7 @@ import ApiServices from './api-services.js';
 import debounce from 'lodash.debounce';
 import onOpenModalFilmCard from './modal-film-card';
 import { onCreateTrailer } from './trailer.js';
+// import { spinner } from './spinner.js';
 
 
 function onLoadHomePage () {
