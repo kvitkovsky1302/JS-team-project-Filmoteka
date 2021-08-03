@@ -7,9 +7,9 @@ import { onCreateTrailer } from './trailer.js';
 const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
 const headerForm = document.querySelector('.header-form');
-filmsList.addEventListener('click', onOpenModalFilmCard);
-searchInput.addEventListener('input', debounce(searchMovies, 800));
-headerForm.addEventListener('keydown', headerFormIgnoreKeypressEnter);
+refs.filmsList.addEventListener('click', onOpenModalFilmCard);
+refs.searchInput.addEventListener('input', debounce(searchMovies, 500));
+refs.headerForm.addEventListener('keydown', headerFormIgnoreKeypressEnter);
 
 const apiServices = new ApiServices();
 

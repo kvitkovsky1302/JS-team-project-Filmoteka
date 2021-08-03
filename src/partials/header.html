@@ -1,14 +1,14 @@
 <header class="header-container">
   <div class="page-header container">
     <div class="nav-header">
-      <a href="./index.html" class="logo-link"></a>
+      <a href="#" class="logo-link" id="logo"></a>
       <nav class="site-nav">
         <ul class="nav-list">
           <li class="nav-item">
-            <a class="nav-link current-link" href="./index.html">Home</a>
+            <a class="nav-link current-link" id="home-link" href="#">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./library.html">my library</a>
+            <a class="nav-link" id="library-link" href="#">my library</a>
           </li>
         </ul>
       </nav>
@@ -23,6 +23,10 @@
         </button>
       </label>
     </form>
+    <div class="list-button visually-hidden">
+      <button class="button-library js-button-library-watched">Watched</button>
+      <button class="button-library js-button-library-queue">queue</button>
+    </div>
 
     <!-- THEME SWITCHER -->
     <div class="theme-switcher">
