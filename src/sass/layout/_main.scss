@@ -22,8 +22,7 @@
   cursor: pointer;
   color: $textLightColor;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $backgroundColorLight;
     border: 1px solid $accentColor;
     color: $accentColor;
