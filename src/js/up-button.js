@@ -8,9 +8,9 @@ upBtn.addEventListener('click', onClickToTop);
 function onHideUpBtn(element) {
   return function hideOnScroll() {
     if (pageYOffset < document.documentElement.clientHeight) {
-      element.classList.add('visuallyhidden');
+      element.classList.add('visually-hidden');
     } else {
-      element.classList.remove('visuallyhidden');
+      element.classList.remove('visually-hidden');
     }
   };
 }

@@ -102,4 +102,3 @@ function addOrRemoveMovieFromLocalStorage(e) {
     }
   }
 }
-
