@@ -22,7 +22,7 @@ function parseWatchedFilmsMarkup() {
     libraryList.innerHTML = '';
     btnLibWatched.classList.add('focus');
     btnLibQueue.classList.remove('focus');
-    parsedWatchedFilmsIds.forEach(loadFilm);
+    parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el.detailMovie));
   } else return;
 }
 
@@ -32,23 +32,10 @@ function parseQueueFilmsMarkup() {
     libraryList.innerHTML = '';
     btnLibWatched.classList.remove('focus');
     btnLibQueue.classList.add('focus');
-    parsedQueueFilmsIds.forEach(loadFilm);
+    parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el.detailMovie));
   } else return;
 }
 
-function loadFilm(id) {
-  apiServices.movieId = id;
-  (async () => {
-    spinner.show();
-    const detailMovie = await apiServices.fetchDetailedMovie();
-    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
-
-    if (detailMovie.genres.length > 3) {
-      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
-    }
-    parseOneCardMarkup(detailMovie);
-  })();
-}
 function parseOneCardMarkup(films) {
   spinner.close();
   libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));

@@ -55,6 +55,10 @@ body.dark-theme {
   background-color: $backgroundColorLight;
 }
 
+.label-theme-switcher:hover {
+  cursor: pointer;
+}
+
 .ball-switcher {
   position: absolute;
   width: 24px;
