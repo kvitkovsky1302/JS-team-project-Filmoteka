@@ -1,5 +1,6 @@
 import refs from './refs.js';
 
+
 refs.libraryLink.addEventListener('click', onLoadLibraryPage);
 
 function onLoadLibraryPage () {
@@ -8,4 +9,10 @@ function onLoadLibraryPage () {
 
     refs.homeLink.classList.remove('current-link');
     refs.libraryLink.classList.add('current-link');
+
+    refs.loadMoreBtn.classList.add('visually-hidden');
+
+    refs.mainWrapper.innerHTML = '';
 };
+
+

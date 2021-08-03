@@ -8,6 +8,7 @@ filmsList: document.querySelector('.js-films-list'),
 searchInput: document.querySelector('.form-text'),
 headerForm: document.querySelector('.header-form'),
 loadMoreBtn: document.querySelector('.load-more-btn'),
+mainWrapper: document.querySelector('.films-list'),
 };
 
 

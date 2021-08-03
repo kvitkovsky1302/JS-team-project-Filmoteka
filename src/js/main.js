@@ -133,21 +133,20 @@ function headerFormIgnoreKeypressEnter(e) {
 
 //--------------------------------load more-------------------------------------------
 
-// const loadMoreBtn = document.querySelector('.load-more-btn')
-refs.loadMoreBtn.addEventListener('click',loadMoreMovies);
-
 function loadMoreMovies() {
-  if (searchInput.value.trim() === "") {
+  if (refs.searchInput.value.trim() === "") {
     loadPopularMovies();
   } else {
     fetchSearchMovies();
   }
 }
 
+refs.homeLink.addEventListener('click', onLoadHomePage);
+refs.logoLink.addEventListener('click', onLoadHomePage);
+
 refs.filmsList.addEventListener('click', onOpenModalFilmCard);
 refs.searchInput.addEventListener('input', debounce(searchMovies, 500));
 refs.headerForm.addEventListener('keydown', headerFormIgnoreKeypressEnter);
 
-refs.homeLink.addEventListener('click', onLoadHomePage);
-refs.logoLink.addEventListener('click', onLoadHomePage);
+refs.loadMoreBtn.addEventListener('click',loadMoreMovies);
 

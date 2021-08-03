@@ -134,7 +134,7 @@ const loadMoreBtn = document.querySelector('.load-more-btn')
 loadMoreBtn.addEventListener('click',loadMoreMovies)
 
 function loadMoreMovies() {
-  if (searchInput.value.trim() === "") {
+  if (refs.searchInput.value.trim() === "") {
     loadPopularMovies();
   } else {
     fetchSearchMovies();
