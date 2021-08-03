@@ -3,6 +3,7 @@ import ApiServices from './api-services.js';
 import debounce from 'lodash.debounce';
 import onOpenModalFilmCard from './modal-film-card';
 import { onCreateTrailer } from './trailer.js';
+import { showError } from './error-message.js';
 
 const filmsList = document.querySelector('.js-films-list');
 const searchInput = document.querySelector('.form-text');
@@ -27,7 +28,6 @@ function searchMovies (event) {
   apiServices.currentQuery = search;
 
   if (apiServices.currentQuery === '') {
-    // showError();
     clearMoviesList();
     apiServices.resetPage();
     loadPopularMovies();
@@ -47,7 +47,7 @@ async function fetchSearchMovies() {
   const { results, totalResults, newResults } = findMovies;
   
   if (totalResults === 0) {
-    // showError();
+    showError();
     clearMoviesList();
     return;
   } else {
@@ -68,7 +68,7 @@ async function loadPopularMovies() {
   const { results, totalResults, newResults } = fetchPopMovies;
   
   if (totalResults === 0) {
-    // showError();
+    showError();
     clearMoviesList();
     return;
   } else {
