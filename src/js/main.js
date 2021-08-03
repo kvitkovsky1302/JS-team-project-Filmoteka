@@ -12,6 +12,8 @@ function onLoadHomePage () {
 
     refs.homeLink.classList.add('current-link');
     refs.libraryLink.classList.remove('current-link');
+    
+    loadPopularMovies();
 }
 
 const apiServices = new ApiServices();
