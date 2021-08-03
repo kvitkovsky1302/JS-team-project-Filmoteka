@@ -12,7 +12,8 @@ function onLoadHomePage () {
 
     refs.homeLink.classList.add('current-link');
     refs.libraryLink.classList.remove('current-link');
-    
+
+    refs.filmsList.innerHTML = '';
     loadPopularMovies();
 }
 
@@ -22,7 +23,7 @@ loadPopularMovies();
 
 function parseMarkup(films) {
   refs.filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
-  onCreateTrailer(document.querySelectorAll('.js-btn-trailer'));
+  onCreateTrailer(document.querySelectorAll('.btn-trailer'));
 }
 
 function searchMovies (event) {
