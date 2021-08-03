@@ -29,7 +29,7 @@ function onLoadLibraryPage () {
         libraryList.innerHTML = '';
         btnLibWatched.classList.add('focus');
         btnLibQueue.classList.remove('focus');
-        parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el.detailMovie));
+        parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el));
         onCreateTrailer(document.querySelectorAll('.btn-trailer'));
     } else return;
     }
@@ -40,7 +40,7 @@ function onLoadLibraryPage () {
         libraryList.innerHTML = '';
         btnLibWatched.classList.remove('focus');
         btnLibQueue.classList.add('focus');
-        parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el.detailMovie));
+        parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el));
         onCreateTrailer(document.querySelectorAll('.btn-trailer'));
     } else return;
     }
