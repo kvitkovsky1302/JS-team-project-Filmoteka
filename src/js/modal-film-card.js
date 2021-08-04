@@ -113,7 +113,7 @@ function addOrRemoveMovieFromLocalStorage(e) {
         }
       });
 
-      arrQueueFilmsIds.splice(arrQueueFilmsIds.indexOf(e.currentTarget.id), 1);
+      arrQueueFilmsIds.splice(arrQueueFilmsIds.indexOf(+e.currentTarget.id), 1);
       localStorage.setItem('arrQueueFilmsIds', JSON.stringify(arrQueueFilmsIds));
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
       e.target.textContent = "add to queue";
