@@ -15,7 +15,7 @@ export default {
     btnLibWatched: document.querySelector('.js-button-library-watched'),
     btnLibQueue: document.querySelector('.js-button-library-queue'),
 
-    libHeader: document.querySelector('.page-header '),
+    libHeader: document.querySelector('.header-container '),
 };
 
 
