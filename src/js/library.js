@@ -13,24 +13,20 @@ function onLoadLibraryPage () {
 
     refs.filmsList.innerHTML = '';
 
-    const libraryList = document.querySelector('.js-films-list');
-    const btnLibWatched = document.querySelector('.js-button-library-watched');
-    const btnLibQueue = document.querySelector('.js-button-library-queue');
-
     const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
     const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
 
-    btnLibWatched.addEventListener('click', () => parseWatchedFilmsMarkup());
-    btnLibQueue.addEventListener('click', () => parseQueueFilmsMarkup());
+    refs.btnLibWatched.addEventListener('click', () => parseWatchedFilmsMarkup());
+    refs.btnLibQueue.addEventListener('click', () => parseQueueFilmsMarkup());
 
     function parseWatchedFilmsMarkup() {
-        libraryList.innerHTML = '';        
+        refs.libraryList.innerHTML = '';        
         libraryWatchedLocalStorage();
             
         if (parsedWatchedFilmsIds ) {
             
-            btnLibWatched.classList.add('focus');
-            btnLibQueue.classList.remove('focus');
+            refs.btnLibWatched.classList.add('focus');
+            refs.btnLibQueue.classList.remove('focus');
             parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el));
             onCreateTrailer(document.querySelectorAll('.btn-trailer'));
             
@@ -38,13 +34,13 @@ function onLoadLibraryPage () {
     }
 
     function parseQueueFilmsMarkup() {
-        libraryList.innerHTML = '';
+        refs.libraryList.innerHTML = '';
         libraryQueueLocalStorage();
                 
         if (parsedQueueFilmsIds ) {
             
-            btnLibWatched.classList.remove('focus');
-            btnLibQueue.classList.add('focus');
+            refs.btnLibWatched.classList.remove('focus');
+            refs.btnLibQueue.classList.add('focus');
             parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el));
             onCreateTrailer(document.querySelectorAll('.btn-trailer'));
             
@@ -52,7 +48,7 @@ function onLoadLibraryPage () {
     }
 
     function parseOneCardMarkup(films) {
-        libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
+        refs.libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
     }
 
     parseWatchedFilmsMarkup();
