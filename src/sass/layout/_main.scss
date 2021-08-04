@@ -29,6 +29,30 @@
   }
 }
 
+.background-image-watched {
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 300px;
+  background-image: url('../img/library-watched.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  // background-attachment: fixed;
+  background-size: cover;
+}
+
+.background-image-queue {
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 300px;
+  background-image: url('../img/library-queue.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  //background-attachment: fixed;
+  background-size: cover;
+}
+
 // .films-container {
 //   padding: 60px 71px 60px 71px;
 // }
