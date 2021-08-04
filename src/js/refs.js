@@ -14,6 +14,8 @@ export default {
     libraryList: document.querySelector('.js-films-list'),
     btnLibWatched: document.querySelector('.js-button-library-watched'),
     btnLibQueue: document.querySelector('.js-button-library-queue'),
+
+    libHeader: document.querySelector('.page-header '),
 };
 
 

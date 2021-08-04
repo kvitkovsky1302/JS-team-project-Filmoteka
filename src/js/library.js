@@ -10,6 +10,7 @@ function onLoadLibraryPage () {
     refs.homeLink.classList.remove('current-link');
     refs.libraryLink.classList.add('current-link');
     refs.loadMoreBtn.classList.add('visually-hidden');
+    refs.libHeader.classList.add('lib-header-container');
 
     refs.filmsList.innerHTML = '';
 
