@@ -7,9 +7,9 @@ defaults.icons = 'material';
 defaults.width = 'auto';
 defaults.delay = '4000';
 
-export function showStackTopLeft(type) {
-    if (typeof window.stackTopLeft === 'undefined') {
-      window.stackTopLeft = new Stack({
+export function showStackTopRight(type) {
+    if (typeof window.showStackTopRight === 'undefined') {
+      window.showStackTopRight = new Stack({
         dir1: 'down',
         dir2: 'left',
         firstpos1: 10,
@@ -19,7 +19,7 @@ export function showStackTopLeft(type) {
       });
     }
     const opts = {
-      stack: window.stackTopLeft
+      stack: window.showStackTopRight
     };
     switch (type) {
       case 'error':
@@ -28,7 +28,7 @@ export function showStackTopLeft(type) {
         opts.type = 'error';
         break;
       case 'info':
-        opts.title = 'It is all';
+        opts.title = 'It is all!';
         opts.text = 'Found all films for your request!';
         opts.type = 'info';
         break;

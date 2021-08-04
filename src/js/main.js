@@ -3,13 +3,13 @@ import createFilmCard from '../templates/one-film-card.hbs';
 import ApiServices from './api-services.js';
 import onOpenModalFilmCard from './modal-film-card';
 import { onCreateTrailer } from './trailer.js';
-import { showStackTopLeft as showNotice } from './error-message.js';
+import { showStackTopRight as showNotice } from './error-message.js';
 
 const apiServices = new ApiServices();
 
 loadPopularMovies();
 
-function onLoadHomePage () {
+function onLoadHomePage() {
   refs.headerForm.classList.remove('visually-hidden');
   refs.headerButtons.classList.add('visually-hidden');
 
@@ -28,14 +28,11 @@ function parseMarkup(films) {
 }
 
 function searchMovies(event) {
-
   event.preventDefault();
-  
   const search = event.currentTarget.elements.query.value.trim()
-
   apiServices.currentQuery = search;
 
-  if (apiServices.currentQuery === '') {
+  if (search === '') {
     clearMoviesList();
     apiServices.resetPage();
     loadPopularMovies();
@@ -46,42 +43,48 @@ function searchMovies(event) {
   clearMoviesList();
   apiServices.resetPage();
   showOrHideBtn();
-  fetchSearchMovies();
+  loadFoundMovies();
 }
 
-async function fetchSearchMovies() {
+async function loadFoundMovies() {
   const findMovies = await apiServices.fetchFindMovies();
   const fetchGenres = await apiServices.fetchGenreMovies();
   const { results, totalResults, newResults } = findMovies;
-
+  console.log(results);
+  console.log(totalResults);
+  console.log(newResults);
+  showOrHideBtn(newResults);
   if (totalResults === 0) {
     showNotice('error');
     clearMoviesList();
     return;
-  } else  {
+
+  } else if (newResults < 20) {
+
     showNotice('info');
-    showOrHideBtn(newResults);
   }
 
   const movies = createMovies(results, fetchGenres);
   parseMarkup(movies);
+
+  return movies;
 }
 
 async function loadPopularMovies() {
   const fetchPopMovies = await apiServices.fetchPopularMovies();
   const fetchGenres = await apiServices.fetchGenreMovies();
   const { results, totalResults, newResults } = fetchPopMovies;
-
+  showOrHideBtn(newResults);
   if (totalResults === 0) {
     showNotice('error');
     clearMoviesList();
     return;
-  } else {
-    showOrHideBtn(newResults);
   }
-  
+
   const movies = createMovies(results, fetchGenres);
   parseMarkup(movies);
+
+  return movies;
 }
 
 function showOrHideBtn(number) {
@@ -121,21 +124,23 @@ function clearMoviesList() {
 
 //--------------------------------load more-------------------------------------------
 
-function loadMoreMovies() {
+async function loadMoreMovies() {
   if (refs.searchInput.value.trim() === '') {
-    loadPopularMovies();
-    setTimeout(scrollToBottom, 1000);
+    const popMovies = await loadPopularMovies();
+    scrollToBottom(popMovies);
   } else {
-    fetchSearchMovies();
-    setTimeout(scrollToBottom, 1000);
+    const foundMovies = await loadFoundMovies();
+    scrollToBottom(foundMovies);
   }
 }
 
-function scrollToBottom() {
-    refs.moviesContainer.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-    });
+function scrollToBottom(movies) {
+  const id = movies[movies.length - 1].id;
+  const element = document.getElementById(`${id}`);
+  element.scrollIntoView({
+    behavior: 'smooth',
+    block: 'end',
+  });
 }
 
 refs.homeLink.addEventListener('click', onLoadHomePage);
@@ -143,4 +148,13 @@ refs.logoLink.addEventListener('click', onLoadHomePage);
 
 refs.filmsList.addEventListener('click', onOpenModalFilmCard);
 refs.headerForm.addEventListener('submit', searchMovies);
-refs.loadMoreBtn.addEventListener('click',loadMoreMovies);
+refs.searchInput.addEventListener('input', isEmptyInput);
+refs.loadMoreBtn.addEventListener('click', loadMoreMovies);
+
+function isEmptyInput(e) {
+  if (e.target.value === '') {
+    clearMoviesList();
+    apiServices.resetPage();
+    loadPopularMovies();
+  }
+}
