@@ -52,12 +52,14 @@ export default function onOpenModalFilmCard(e) {
 }
 
 function onCloseModalFilmCard(e) {
-  if (e.code === 'Escape' || e.currentTarget.classList.contains('js-modal-close-btn')) {
-    instance.close();
-    window.removeEventListener('keydown', onCloseModalFilmCard);
-    modalFilm.removeEventListener('click', addOrRemoveMovieFromLocalStorage);
+  if (e.code !== 'Escape' && !e.target?.classList.contains('close')) {
+    return;
   }
+  instance.close();
+  window.removeEventListener('keydown', onCloseModalFilmCard);
+  modalFilm.removeEventListener('click', addOrRemoveMovieFromLocalStorage);
 }
+
 
 async function craeteDetailMovieObj() {
   detailMovie = await apiServices.fetchDetailedMovie();
@@ -83,11 +85,12 @@ function addOrRemoveMovieFromLocalStorage(e) {
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
       e.target.textContent = "remove from watched";
     } else {
-      watchedFilmsIds.forEach(el => {
+      watchedFilmsIds.forEach((el, ind) => {
         if (el.id === +e.currentTarget.id) {
-          watchedFilmsIds.splice(watchedFilmsIds.indexOf(el.id), 1)
+          watchedFilmsIds.splice(ind, 1);
         }
       });
+
       arrWatchedFilmsIds.splice(arrWatchedFilmsIds.indexOf(+e.currentTarget.id), 1);
       localStorage.setItem('arrWatchedFilmsIds', JSON.stringify(arrWatchedFilmsIds))
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
@@ -104,11 +107,12 @@ function addOrRemoveMovieFromLocalStorage(e) {
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
       e.target.textContent = "remove from queue";
     } else {
-      queueFilmsIds.forEach(el => {
+      queueFilmsIds.forEach((el, ind) => {
         if (el.id === +e.currentTarget.id) {
-          queueFilmsIds.splice(queueFilmsIds.indexOf(el.id), 1)
+          queueFilmsIds.splice(ind, 1)
         }
       });
+
       arrQueueFilmsIds.splice(arrQueueFilmsIds.indexOf(e.currentTarget.id), 1);
       localStorage.setItem('arrQueueFilmsIds', JSON.stringify(arrQueueFilmsIds));
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
