@@ -8,6 +8,7 @@ export default {
     searchInput: document.querySelector('.form-text'),
     headerForm: document.querySelector('.header-form'),
     searchBtn: document.querySelector('.header-button'),
+    libraryBackgrounImage: document.querySelector('.library-background-image'),
     loadMoreBtn: document.querySelector('.load-more-btn'),
 };
 

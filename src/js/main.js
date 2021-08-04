@@ -16,6 +16,8 @@ function onLoadHomePage() {
   refs.homeLink.classList.add('current-link');
   refs.libraryLink.classList.remove('current-link');
 
+  refs.libraryBackgrounImage.classList.add('visually-hidden');
+
   refs.headerForm.reset();
   clearMoviesList();
   apiServices.resetPage();

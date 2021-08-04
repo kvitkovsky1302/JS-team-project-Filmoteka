@@ -24,33 +24,62 @@ function onLoadLibraryPage () {
     btnLibQueue.addEventListener('click', () => parseQueueFilmsMarkup());
 
     function parseWatchedFilmsMarkup() {
-        
-    if (parsedWatchedFilmsIds) {
-        libraryList.innerHTML = '';
-        btnLibWatched.classList.add('focus');
-        btnLibQueue.classList.remove('focus');
-        parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el));
-        onCreateTrailer(document.querySelectorAll('.btn-trailer'));
-    } else return;
+        libraryList.innerHTML = '';        
+        libraryWatchedLocalStorage();
+            
+        if (parsedWatchedFilmsIds ) {
+            
+            btnLibWatched.classList.add('focus');
+            btnLibQueue.classList.remove('focus');
+            parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el));
+            onCreateTrailer(document.querySelectorAll('.btn-trailer'));
+            
+        } else return;
     }
 
     function parseQueueFilmsMarkup() {
-    
-    if (parsedQueueFilmsIds) {
         libraryList.innerHTML = '';
-        btnLibWatched.classList.remove('focus');
-        btnLibQueue.classList.add('focus');
-        parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el));
-        onCreateTrailer(document.querySelectorAll('.btn-trailer'));
-    } else return;
+        libraryQueueLocalStorage();
+                
+        if (parsedQueueFilmsIds ) {
+            
+            btnLibWatched.classList.remove('focus');
+            btnLibQueue.classList.add('focus');
+            parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el));
+            onCreateTrailer(document.querySelectorAll('.btn-trailer'));
+            
+        } else return;
     }
 
     function parseOneCardMarkup(films) {
-    libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
+        libraryList.insertAdjacentHTML('beforeend', createFilmCard(films));
     }
 
     parseWatchedFilmsMarkup();
+    libraryWatchedLocalStorage();
     
+    function libraryWatchedLocalStorage() {
 
+        const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
+
+        if (localStorage.getItem('watchedFilmsIds') === null || parsedWatchedFilmsIds.length === 0) {
+            refs.libraryBackgrounImage.classList.remove('visually-hidden');
+            refs.libraryBackgrounImage.classList.add('background-image-watched');
+        }
+
+        refs.libraryBackgrounImage.classList.remove('background-image-queue');
+    }
+
+    function libraryQueueLocalStorage() {
+
+        const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
+        
+        if (localStorage.getItem('queueFilmsIds') === null || parsedQueueFilmsIds.length === 0) {
+            refs.libraryBackgrounImage.classList.remove('visually-hidden');
+            refs.libraryBackgrounImage.classList.add('background-image-queue');
+        }
+
+        refs.libraryBackgrounImage.classList.remove('background-image-watched');
+    }
 };
 
