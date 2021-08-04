@@ -6,11 +6,15 @@ import * as basicLightbox from 'basiclightbox';
 
 const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
 const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
+const arrWatchedFilmsIds = JSON.parse(localStorage.getItem('arrWatchedFilmsIds')) || [];
+const arrQueueFilmsIds = JSON.parse(localStorage.getItem('arrQueueFilmsIds')) || [];
 
 let instance;
 let modalFilm;
 let btnAddToWatched;
 let btnAddToQueue;
+let closeBtn;
+let detailMovie;
 
 export default function onOpenModalFilmCard(e) {
   if (e.target.nodeName !== 'IMG') {
@@ -19,12 +23,7 @@ export default function onOpenModalFilmCard(e) {
 
   apiServices.movieId = e.target.parentNode.parentNode.id;
   (async () => {
-    const detailMovie = await apiServices.fetchDetailedMovie();
-    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
-
-    if (detailMovie.genres.length > 3) {
-      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
-    }
+    await craeteDetailMovieObj();
 
     const markupModalCard = createModalCard(detailMovie);
 
@@ -32,18 +31,19 @@ export default function onOpenModalFilmCard(e) {
     instance.show();
     
     modalFilm = document.querySelector('.modal-film');
-    document.querySelector('.js-modal-close-btn').addEventListener('click', onCloseModalFilmCard);
+    closeBtn = document.querySelector('.js-modal-close-btn');
     btnAddToWatched = document.querySelector('.js-button-watched');
     btnAddToQueue = document.querySelector('.js-button-queue');
 
-    if (watchedFilmsIds.includes(e.target.parentNode.parentNode.id)) {
+    if (arrWatchedFilmsIds.includes(+e.target.parentNode.parentNode.id)) {
       btnAddToWatched.textContent = "remove from watched";
     }
 
-    if (queueFilmsIds.includes(e.target.parentNode.parentNode.id)) {
+    if (arrQueueFilmsIds.includes(+e.target.parentNode.parentNode.id)) {
       btnAddToQueue.textContent = "remove from queue";
     }
     
+    closeBtn.addEventListener('click', onCloseModalFilmCard);
     modalFilm.addEventListener('click', addOrRemoveMovieFromLocalStorage);
 
   })();
@@ -59,6 +59,16 @@ function onCloseModalFilmCard(e) {
   }
 }
 
+async function craeteDetailMovieObj() {
+  detailMovie = await apiServices.fetchDetailedMovie();
+    detailMovie.year = detailMovie.release_date ? detailMovie.release_date.split('-')[0] : 'n/a';
+
+    if (detailMovie.genres.length > 3) {
+      detailMovie.genres = detailMovie.genres.slice(0, 2).flat().concat({ name: 'Other' });
+    }
+  return detailMovie;
+}
+
 //------------------------------------------local storage----------------------------------------------------
 
 
@@ -66,32 +76,43 @@ function addOrRemoveMovieFromLocalStorage(e) {
 
   if (e.target.classList.contains('js-button-watched')) {
 
-    if (!watchedFilmsIds.includes(e.currentTarget.id)) {
-      watchedFilmsIds.push(e.currentTarget.id);
+    if (!arrWatchedFilmsIds.includes(+e.currentTarget.id)) {
+      arrWatchedFilmsIds.push(detailMovie.id);
+      watchedFilmsIds.push(detailMovie);
+      localStorage.setItem('arrWatchedFilmsIds', JSON.stringify(arrWatchedFilmsIds))
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
       e.target.textContent = "remove from watched";
-      window.location.reload();
     } else {
-      watchedFilmsIds.splice(watchedFilmsIds.indexOf(e.currentTarget.id), 1);
+      watchedFilmsIds.forEach(el => {
+        if (el.id === +e.currentTarget.id) {
+          watchedFilmsIds.splice(watchedFilmsIds.indexOf(el.id), 1)
+        }
+      });
+      arrWatchedFilmsIds.splice(arrWatchedFilmsIds.indexOf(+e.currentTarget.id), 1);
+      localStorage.setItem('arrWatchedFilmsIds', JSON.stringify(arrWatchedFilmsIds))
       localStorage.setItem('watchedFilmsIds', JSON.stringify(watchedFilmsIds));
       e.target.textContent = "add to watched";
-      window.location.reload();
-    }    
+    }
   }
 
   if (e.target.classList.contains('js-button-queue')) {
 
-    if (!queueFilmsIds.includes(e.currentTarget.id)) {
-      queueFilmsIds.push(e.currentTarget.id);
+    if (!arrQueueFilmsIds.includes(+e.currentTarget.id)) {
+      arrQueueFilmsIds.push(detailMovie.id);
+      queueFilmsIds.push(detailMovie);
+      localStorage.setItem('arrQueueFilmsIds', JSON.stringify(arrQueueFilmsIds));
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
       e.target.textContent = "remove from queue";
-      window.location.reload();
     } else {
-      queueFilmsIds.splice(queueFilmsIds.indexOf(e.currentTarget.id), 1);
+      queueFilmsIds.forEach(el => {
+        if (el.id === +e.currentTarget.id) {
+          queueFilmsIds.splice(queueFilmsIds.indexOf(el.id), 1)
+        }
+      });
+      arrQueueFilmsIds.splice(arrQueueFilmsIds.indexOf(e.currentTarget.id), 1);
+      localStorage.setItem('arrQueueFilmsIds', JSON.stringify(arrQueueFilmsIds));
       localStorage.setItem('queueFilmsIds', JSON.stringify(queueFilmsIds));
       e.target.textContent = "add to queue";
-      window.location.reload();
     }
   }
 }
-

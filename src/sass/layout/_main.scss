@@ -5,7 +5,7 @@
 .load-more-btn {
   display: block;
   width: 110px;
-  min-height: 44px;
+  height: 44px;
   margin-left: auto;
   margin-right: auto;
 
@@ -22,12 +22,35 @@
   cursor: pointer;
   color: $textLightColor;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: $backgroundColorLight;
     border: 1px solid $accentColor;
     color: $accentColor;
   }
+}
+
+.background-image-watched {
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 300px;
+  background-image: url('../img/library-watched.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  // background-attachment: fixed;
+  background-size: cover;
+}
+
+.background-image-queue {
+  margin-left: auto;
+  margin-right: auto;
+  height: 200px;
+  width: 300px;
+  background-image: url('../img/library-queue.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  //background-attachment: fixed;
+  background-size: cover;
 }
 
 // .films-container {
@@ -73,6 +96,7 @@
 // .film-list__box-info {
 //   font-size: 12px;
 // }
-// .film-list__box-info-title {
-//   margin: 10px 0 10px 0;
-// }
+.film-list__box-info-title {
+  margin: 10px 0 10px 0;
+  text-align: left;
+}
