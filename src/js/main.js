@@ -4,6 +4,7 @@ import ApiServices from './api-services.js';
 import onOpenModalFilmCard from './modal-film-card';
 import { onCreateTrailer } from './trailer.js';
 import { showStackTopRight as showNotice } from './error-message.js';
+import { spinner } from './spinner.js';
 
 const apiServices = new ApiServices();
 
@@ -25,6 +26,7 @@ function onLoadHomePage() {
 }
 
 function parseMarkup(films) {
+  spinner.close();
   refs.filmsList.insertAdjacentHTML('beforeend', createFilmCard(films));
   onCreateTrailer(document.querySelectorAll('.btn-trailer'));
 }
@@ -49,6 +51,7 @@ function searchMovies(event) {
 }
 
 async function loadFoundMovies() {
+  spinner.show();
   const findMovies = await apiServices.fetchFindMovies();
   const fetchGenres = await apiServices.fetchGenreMovies();
   const { results, totalResults, newResults } = findMovies;
@@ -57,6 +60,7 @@ async function loadFoundMovies() {
   console.log(newResults);
   showOrHideBtn(newResults);
   if (totalResults === 0) {
+    spinner.close();
     showNotice('error');
     clearMoviesList();
     return;
@@ -73,11 +77,13 @@ async function loadFoundMovies() {
 }
 
 async function loadPopularMovies() {
+  spinner.show();
   const fetchPopMovies = await apiServices.fetchPopularMovies();
   const fetchGenres = await apiServices.fetchGenreMovies();
   const { results, totalResults, newResults } = fetchPopMovies;
   showOrHideBtn(newResults);
   if (totalResults === 0) {
+    spinner.close();
     showNotice('error');
     clearMoviesList();
     return;
