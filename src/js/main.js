@@ -19,6 +19,8 @@ function onLoadHomePage() {
 
   refs.libraryBackgrounImage.classList.add('visually-hidden');
 
+  refs.libHeader.classList.remove('lib-header-container');
+
   refs.headerForm.reset();
   clearMoviesList();
   apiServices.resetPage();
