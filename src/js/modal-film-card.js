@@ -61,10 +61,12 @@ function onCloseModalFilmCard(e) {
   window.removeEventListener('keydown', onCloseModalFilmCard);
   modalFilm.removeEventListener('click', addOrRemoveMovieFromLocalStorage);
 
-  if (refs.btnLibWatched.classList.contains('focus')) {
-    parseWatchedFilmsMarkup();
-  } else {
-    parseQueueFilmsMarkup();
+  if (refs.libraryLink.classList.contains('current-link')) {
+    if (refs.btnLibWatched.classList.contains('focus')) {
+      parseWatchedFilmsMarkup();
+    } else {
+      parseQueueFilmsMarkup();
+    }
   }
 }
 
