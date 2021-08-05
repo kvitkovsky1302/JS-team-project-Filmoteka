@@ -50,6 +50,39 @@ a {
   }
 }
 
+.lib-header-container {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url('../img/header-library/rectanglem.jpg');
+
+  @media screen and (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../img/header-library/rectanglem@2x.jpg');
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../img/header-library/rectanglet.jpg');
+
+    @media screen and (min-resolution: 2dppx) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../img/header-library/rectanglet@2x.jpg');
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url('../img/header-library/rectangle.jpg');
+
+    @media screen and (min-resolution: 2dppx) {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url('../img/header-library/rectangle@2x.jpg');
+    }
+  }
+}
+
 .page-header {
   height: 230px;
  }
@@ -237,35 +270,3 @@ a {
   margin-right: 15px;
 }
 
-.lib-header-container {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-    url('../img/header-library/rectanglem.jpg');
-
-  @media screen and (min-resolution: 2dppx) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../img/header-library/rectanglem@2x.jpg');
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../img/header-library/rectanglet.jpg');
-
-    @media screen and (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../img/header-library/rectanglet@2x.jpg');
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-      url('../img/header-library/rectangle.jpg');
-
-    @media screen and (min-resolution: 2dppx) {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url('../img/header-library/rectangle@2x.jpg');
-    }
-  }
-}

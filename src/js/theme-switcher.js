@@ -1,9 +1,8 @@
-const checkboxThemeSwitcher = document.getElementById('checkbox-theme-switcher');
-const footerThemeColor = document.querySelector('.footer');
+import refs from './refs.js';
 
 const changeTheme = () => {
 
-     if (checkboxThemeSwitcher.checked) {
+     if (refs.checkboxThemeSwitcher.checked) {
         darkTheme();
     } else {
         lightTheme();
@@ -16,7 +15,7 @@ const themeOnPage = () => {
     if (currentTheme === null || currentTheme === 'light') {
         lightTheme();
     } else {
-        checkboxThemeSwitcher.checked = true;
+        refs.checkboxThemeSwitcher.checked = true;
         darkTheme();
     }
 }
@@ -25,19 +24,19 @@ const themeOnPage = () => {
 const lightTheme = () => {
     localStorage.setItem('Theme', 'light');
     document.body.classList.remove('dark-theme');
-    footerThemeColor.classList.remove('dark-theme');
+    refs.footerThemeColor.classList.remove('dark-theme');
     document.body.classList.add('light-theme');
-    footerThemeColor.classList.add('light-theme');
+    refs.footerThemeColor.classList.add('light-theme');
     
 }
 
 const darkTheme = () => {
     localStorage.setItem('Theme', 'dark');
     document.body.classList.remove('light-theme');
-    footerThemeColor.classList.remove('light-theme');    
+    refs.footerThemeColor.classList.remove('light-theme');    
     document.body.classList.add('dark-theme');
-    footerThemeColor.classList.add('dark-theme');
+    refs.footerThemeColor.classList.add('dark-theme');
 }
 
 themeOnPage();
-checkboxThemeSwitcher.addEventListener('change', changeTheme);
+refs.checkboxThemeSwitcher.addEventListener('change', changeTheme);
