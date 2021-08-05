@@ -45,7 +45,7 @@ export default class ApiServices {
   }
 
   newResults(number) {
-    return number - this.page * 20 + 20;
+    return number - (this.page * 20) + 20;
   }
 
   resetPage() {

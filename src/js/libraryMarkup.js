@@ -6,11 +6,10 @@ function parseWatchedFilmsMarkup() {
     refs.libraryList.innerHTML = '';        
     libraryWatchedLocalStorage();
     const parsedWatchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds'));
+    refs.btnLibWatched.classList.add('focus');
+    refs.btnLibQueue.classList.remove('focus');
         
     if (parsedWatchedFilmsIds ) {
-        
-        refs.btnLibWatched.classList.add('focus');
-        refs.btnLibQueue.classList.remove('focus');
         parsedWatchedFilmsIds.forEach(el => parseOneCardMarkup(el));
         onCreateTrailer(document.querySelectorAll('.btn-trailer'));
         
@@ -21,11 +20,9 @@ function parseQueueFilmsMarkup() {
     refs.libraryList.innerHTML = '';
     libraryQueueLocalStorage();
     const parsedQueueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds'));
-            
+    refs.btnLibWatched.classList.remove('focus');
+    refs.btnLibQueue.classList.add('focus');
     if (parsedQueueFilmsIds ) {
-        
-        refs.btnLibWatched.classList.remove('focus');
-        refs.btnLibQueue.classList.add('focus');
         parsedQueueFilmsIds.forEach(el => parseOneCardMarkup(el));
         onCreateTrailer(document.querySelectorAll('.btn-trailer'));
         
