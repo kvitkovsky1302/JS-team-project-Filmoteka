@@ -1,8 +1,10 @@
 import ApiServices from './api-services.js';
+import refs from './refs.js';
 import createModalCard from '../templates/modal-film-card.hbs';
-const apiServices = new ApiServices();
+import { parseWatchedFilmsMarkup, parseQueueFilmsMarkup } from './libraryMarkup.js';
 import * as basicLightbox from 'basiclightbox';
 
+const apiServices = new ApiServices();
 
 const watchedFilmsIds = JSON.parse(localStorage.getItem('watchedFilmsIds')) || [];
 const queueFilmsIds = JSON.parse(localStorage.getItem('queueFilmsIds')) || [];
@@ -58,6 +60,12 @@ function onCloseModalFilmCard(e) {
   instance.close();
   window.removeEventListener('keydown', onCloseModalFilmCard);
   modalFilm.removeEventListener('click', addOrRemoveMovieFromLocalStorage);
+
+  if (refs.btnLibWatched.classList.contains('focus')) {
+    parseWatchedFilmsMarkup();
+  } else {
+    parseQueueFilmsMarkup();
+  }
 }
 
 
