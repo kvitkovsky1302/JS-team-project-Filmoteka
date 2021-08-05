@@ -23,5 +23,6 @@
   .film-items:hover .btn-trailer {
     width: 240px;
     font-size: 16px;
+    transition: 250ms ease-in-out;
   }
 }
