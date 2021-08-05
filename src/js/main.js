@@ -57,9 +57,6 @@ async function loadFoundMovies() {
   const findMovies = await apiServices.fetchFindMovies();
   const fetchGenres = await apiServices.fetchGenreMovies();
   const { results, totalResults, newResults } = findMovies;
-  console.log(results);
-  console.log(totalResults);
-  console.log(newResults);
   showOrHideBtn(newResults);
   if (totalResults === 0) {
     spinner.close();
