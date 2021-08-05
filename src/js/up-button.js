@@ -1,9 +1,5 @@
 import throttle from 'lodash.throttle';
-
-const upBtn = document.querySelector('.btn__up-wrapper');
-
-window.addEventListener('scroll', throttle(onHideUpBtn(upBtn), 500));
-upBtn.addEventListener('click', onClickToTop);
+import refs from './refs.js';
 
 function onHideUpBtn(element) {
   return function hideOnScroll() {
@@ -18,3 +14,6 @@ function onHideUpBtn(element) {
 function onClickToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+window.addEventListener('scroll', throttle(onHideUpBtn(refs.upBtn), 500));
+refs.upBtn.addEventListener('click', onClickToTop);

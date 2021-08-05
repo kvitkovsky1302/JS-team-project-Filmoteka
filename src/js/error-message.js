@@ -1,4 +1,4 @@
-import { alert, error, info, notice, defaults, Stack } from '@pnotify/core';
+import { notice, defaults, Stack } from '@pnotify/core';
 import '@pnotify/core/dist/Material.css';
 import '@pnotify/core/dist/PNotify.css';
 import 'material-design-icons/iconfont/material-icons.css';

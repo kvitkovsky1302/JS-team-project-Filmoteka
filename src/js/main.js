@@ -153,14 +153,6 @@ function scrollToBottom(movies) {
   });
 }
 
-refs.homeLink.addEventListener('click', onLoadHomePage);
-refs.logoLink.addEventListener('click', onLoadHomePage);
-
-refs.filmsList.addEventListener('click', onOpenModalFilmCard);
-refs.headerForm.addEventListener('submit', searchMovies);
-refs.searchInput.addEventListener('input', isEmptyInput);
-refs.loadMoreBtn.addEventListener('click', loadMoreMovies);
-
 function isEmptyInput(e) {
   if (e.target.value === '') {
     clearMoviesList();
@@ -168,3 +160,11 @@ function isEmptyInput(e) {
     loadPopularMovies();
   }
 }
+
+refs.homeLink.addEventListener('click', onLoadHomePage);
+refs.logoLink.addEventListener('click', onLoadHomePage);
+
+refs.filmsList.addEventListener('click', onOpenModalFilmCard);
+refs.headerForm.addEventListener('submit', searchMovies);
+refs.searchInput.addEventListener('input', isEmptyInput);
+refs.loadMoreBtn.addEventListener('click', loadMoreMovies);

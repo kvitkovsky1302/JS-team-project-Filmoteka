@@ -10,12 +10,13 @@ export default {
     searchBtn: document.querySelector('.header-button'),
     libraryBackgrounImage: document.querySelector('.library-background-image'),
     loadMoreBtn: document.querySelector('.load-more-btn'),
-
     libraryList: document.querySelector('.js-films-list'),
     btnLibWatched: document.querySelector('.js-button-library-watched'),
     btnLibQueue: document.querySelector('.js-button-library-queue'),
-
     libHeader: document.querySelector('.header-container '),
+    checkboxThemeSwitcher: document.getElementById('checkbox-theme-switcher'),
+    footerThemeColor: document.querySelector('.footer'),
+    upBtn: document.querySelector('.btn__up-wrapper'),
 };
 
 
