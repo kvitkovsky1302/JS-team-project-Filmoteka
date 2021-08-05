@@ -1,75 +1,72 @@
-<div class="modal-film" id={{id}}>
+<div class='modal-film' id={{id}}>
 
-    <button type="button" class="modal-close-btn js-modal-close-btn" >
-        <span class="close"></span>
-    </button>
+  <button type='button' class='modal-close-btn js-modal-close-btn'>
+    <span class='close'></span>
+  </button>
 
-    <!-- постер фільму (картинка) модалка -->
-    <div class="modal-film__img-cont">
-         {{#if poster_path}}
-        <img 
-        class="modal-film__img" 
-        src="https://image.tmdb.org/t/p/w342{{poster_path}}" 
-        alt="{{title}} movie poster" />
-         {{else}}
-          <img
-          class='film-list__image'
-          src='https://i.ibb.co/8mnHvb2/no-poster.jpg'
-          alt='no_poster'
-        />
-        {{/if}}
+  <!-- постер фільму (картинка) модалка -->
+  <div class='modal-film__img-cont'>
+    {{#if poster_path}}
+      <img
+        class='modal-film__img'
+        src='https://image.tmdb.org/t/p/w780{{poster_path}}'
+        alt='{{title}} movie poster'
+      />
+    {{else}}
+      <img class='film-list__image' src='https://i.ibb.co/8mnHvb2/no-poster.jpg' alt='no_poster' />
+    {{/if}}
+  </div>
+
+  <!-- текстова частина модалки -->
+  <div class='modal-film__text-cont'>
+    <h2 class='modal-film__text-cont__name'>{{title}}</h2>
+
+    <table class='modal-films__tb'>
+      <tr class='modal-film__tr'>
+        <td class='modal-film__td-left'>Vote / Votes</td>
+        <td class='modal-film__td-right'>
+          <span class='text orang'>{{vote_average}}</span>
+          /
+          <span class='modal-film__text-cont__votes'>{{vote_count}}</span>
+        </td>
+      </tr>
+      <tr class='modal-film__tr'>
+        <td class='modal-film__td-left'>Popularity</td>
+        <td class='modal-film__td-right'>
+          <span class='text'> {{popularity}}</span>
+        </td>
+      </tr>
+
+      <tr class='modal-film__tr'>
+        <td class='modal-film__td-left'>Original title</td>
+        <td class='modal-film__td-right'><span class='text'>{{original_title}}</span>
+        </td>
+      </tr>
+
+      <tr>
+        <td class='modal-film__td-left'>Genre</td>
+        <td class='modal-film__td-right'><span class='text'>{{#each genres}}
+              {{this.name}}
+
+            {{/each}}</span>
+        </td>
+      </tr>
+    </table>
+    <div class='modal-film__text-cont__cont'>
+      <p class='modal-film__text-cont__about'>About</p>
+      <p class='modal-film__text-cont__about-description'>
+        {{overview}}
+      </p>
+    </div>
+    <!-- Кнопки модалки -->
+    <div class='button-modal-wrapper'>
+      <button type='button' class='button-modal js-button-watched' data-id='{{id}}'>
+        add to watched
+      </button>
+      <button type='button' class='button-modal js-button-queue' data-id='{{id}}'>
+        add to queue
+      </button>
     </div>
 
-
-    <!-- текстова частина модалки -->
-    <div class="modal-film__text-cont">
-        <h2 class="modal-film__text-cont__name">{{title}}</h2>
-
-        <table class="modal-films__tb">
-                <tr class="modal-film__tr">
-                    <td class="modal-film__td-left">Vote / Votes</td>
-                    <td class="modal-film__td-right">
-                        <span class="text orang">{{vote_average}}</span>
-                            /
-                        <span class="modal-film__text-cont__votes">{{vote_count}}</span>
-                    </td>
-                </tr>    
-                <tr class="modal-film__tr">
-                     <td class="modal-film__td-left">Popularity</td>
-                     <td class="modal-film__td-right">
-                           <span class="text"> {{popularity}}</span>
-                     </td>
-                </tr>
-
-                <tr class="modal-film__tr">
-                    <td class="modal-film__td-left">Original title</td>
-                    <td class="modal-film__td-right"><span class="text">{{original_title}}</span>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="modal-film__td-left">Genre</td>
-                    <td class="modal-film__td-right"><span class="text">{{#each genres}}  {{this.name}}
-    
-                            {{/each}}</span>
-                    </td>
-                </tr>
-        </table>
-        <div class="modal-film__text-cont__cont">
-                <p class="modal-film__text-cont__about">About</p>
-                <p class="modal-film__text-cont__about-description">
-                    {{overview}}
-                </p> 
-        </div>
-        <!-- Кнопки модалки -->
-        <div class="button-modal-wrapper">
-                <button type="button" class="button-modal js-button-watched" data-id="{{id}}">
-                    add to watched
-                </button>
-                <button type="button" class="button-modal js-button-queue" data-id="{{id}}">
-                    add to queue
-                </button>
-        </div>        
-        
-    </div>  
+  </div>
 </div>
