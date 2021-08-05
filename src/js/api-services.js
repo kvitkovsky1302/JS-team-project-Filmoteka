@@ -10,12 +10,12 @@ export default class ApiServices {
     const URL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${this.query}&page=${this.page}`;
     const res = await fetch(URL);
     const { results, total_results } = await res.json();
-    
+
     const totalResults = total_results;
     const newResults = this.newResults(totalResults);
     this.addPage();
 
-    return { results, totalResults, newResults }; 
+    return { results, totalResults, newResults };
   }
 
   async fetchDetailedMovie() {
@@ -29,11 +29,11 @@ export default class ApiServices {
     const URL = `https://api.themoviedb.org/3/trending/movie/week?api_key=${API_KEY}&page=${this.page}`;
     const res = await fetch(URL);
     const { results, total_results } = await res.json();
-    
+
     const totalResults = total_results;
     const newResults = this.newResults(totalResults);
     this.addPage();
-    
+
     return { results, totalResults, newResults };
   }
 
@@ -45,7 +45,7 @@ export default class ApiServices {
   }
 
   newResults(number) {
-    return number - (this.page * 20) + 20;
+    return number - this.page * 20 + 20;
   }
 
   resetPage() {
@@ -67,7 +67,7 @@ export default class ApiServices {
   set currentId(newId) {
     this.movieId = newId;
   }
-  
+
   get currentId() {
     return this.movieId;
   }
