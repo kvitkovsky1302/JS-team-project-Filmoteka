@@ -6,6 +6,7 @@
   height: 46px;
   border: none;
   border-radius: 15px;
+  opacity: 0.6;
 
   color: $textLightColor;
   font-weight: 500;
@@ -23,6 +24,7 @@
   .film-items:hover .btn-trailer {
     width: 240px;
     font-size: 16px;
+    opacity: 0.9;
     transition: 250ms ease-in-out;
   }
 }
